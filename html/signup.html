@@ -6,19 +6,19 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="">
+    <form >
         <fieldset>
           <legend>sign up</legend>
           <label for="username">username</label>
-          <input type="text" id="username" name="username"><br><br>
+          <input type="text" id="username" name="username" autocomplete="username"><br><br>
           <label for="password">password</label>
-          <input type="password" id="password" name="password"><br><br>
-          <label for="birthday">Birthday:</label>
-          <input type="date" id="birthday" name="birthday"><br><br>
-          <input type="submit" value="Submit" id="submit">
+          <input type="password" id="password" name="password" autocomplete="new-password"><br><br>
+          <label for="birthday">birthday:</label>
+          <input type="date" id="birthday" name="birthday" autocomplete="bday"><br><br>
+          <button id="submit">submit</button> 
         </fieldset>
       </form>
 
-      <script src="./signup.html"></script> 
+      <script src="../js/signupScript.js"></script> 
 </body>
 </html>
