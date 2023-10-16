@@ -1,10 +1,9 @@
-let board = [];
+const board = [];
 
 //! Change function name
-function createDivs(rows, columns) {
+function createBoardGame(rows, columns) {
     for (let i = 0; i < columns; i++) {
-        console.log("entered")
-        let column = [];
+        const column = [];
         for (let j = 0; j < rows; j++) {
             //creates divs according to the rows and columns given 
             // and add to the div different class names and an event listener
@@ -20,17 +19,15 @@ function createDivs(rows, columns) {
         //push the column array to be an element of board
         board.push(column);
     }
-    let container = document.getElementById("container")
+    const container = document.getElementById("container")
     container.style.backgroundColor = "black";
     //orgenizing the grid to have the number of columns and rows the board was set to
     container.style.gridTemplateColumns = `repeat(${columns},auto)`
     container.style.gridTemplateRows = `repeat(${rows},auto)`
-    console.log('container.style: ', container.style);
 
 }
-createDivs(6, 7);
+createBoardGame(6, 7);
 //! Remove logs
-console.log(board) 
 
 //not finished, אמור לסמן את הריבוע בצבע
 function turn() {

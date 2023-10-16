@@ -3,21 +3,19 @@
 // localStorage.setItem("users",item)
 //! Consider change function name
 const log_in = document.getElementById("enter");
-log_in.addEventListener("click", checkUser);
+log_in.addEventListener("click", checkUserExistence);
 
 //! Consider change function name
 
-function checkUser () {
-    console.log("entered")
+function checkUserExistence () {
     let FailedLogin = 0
     if (FailedLogin>=3){
 
     }
     const name = document.getElementById("Username").value;
     const password = document.getElementById("Password").value;
-    console.log(name)
-    let usersstr = localStorage.getItem("users");
-    let usersarr = JSON.parse(usersstr);
+    const usersstr = localStorage.getItem("users");
+    const usersarr = JSON.parse(usersstr);
     for (element of usersarr) {
         if (element.username === name && element.password == password){
              window.location.href = "../html/gamemenu.html"
