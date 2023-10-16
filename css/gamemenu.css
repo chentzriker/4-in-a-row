@@ -1,0 +1,18 @@
+img:hover {
+        animation-name: expand;
+        animation-duration: 3s;
+      }
+
+@keyframes expand {
+    0% {
+      width:20% ;
+    }
+
+    50% {
+        width: 23%;
+    }
+    
+    100% {
+      width:20% ;
+    }
+  }
