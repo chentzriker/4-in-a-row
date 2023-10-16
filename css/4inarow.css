@@ -4,12 +4,20 @@ html, body {
 }
 
 
-.cell {
-    background-color: blue;
+.white {
+    background-color: white;
     margin: 5px;
 }
-
+.yellow{
+    background-color: yellow;
+    margin: 5px;
+}
+.red{
+    background-color: red;
+    margin: 5px;
+}
 #container {
+    background-color: blue;
     height: 90%;
     width: 70%;
     display: grid;
