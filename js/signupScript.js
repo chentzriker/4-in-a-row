@@ -2,7 +2,10 @@
 document.getElementById("submit").addEventListener("click", function (event) {
     event.preventDefault()
     if (checkValidation()) {
-        checkUser()
+        //if user created successfully moving to the manu page
+        if (checkUser())
+        window.location.href = "../html/gamemenu.html"
+        return;
     }
 });
 
@@ -13,6 +16,7 @@ function checkValidation() {
     let currUsername = document.getElementById("username").value;
     let curPassword = document.getElementById("password").value;
     let curAge = document.getElementById("age").value;
+
     //check validation of email
     let usernameRegex = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
     if (usernameRegex.exec(currUsername) == null) {
@@ -25,8 +29,14 @@ function checkValidation() {
         alert("Password should contain: \n 1. at least one uppercase letter \n 2.at least one lowercase letter\n 3.at least one digit \n 4.should be more than 4 character")
         return false;
     }
+    //check if password was confirmed
+    let passwordConfirm = document.getElementById("confirm").value;
+    if (passwordConfirm!==curPassword){
+        alert("passwords do not match")
+        return false;
+    }
     if (curAge < 15 || curAge > 99) {
-        alert("Our site is only available to people aged 16-99")
+        alert("Our site is only available to people between the aged 16-99")
         return false;
     }
     return true;
@@ -42,7 +52,7 @@ function checkUser() {
     for (let i = 0; i < curUsers.length; i++) {
         if (curUsers[i].username == currUsername) {
             alert("this username already exists")
-            return
+            return false
         }
     }
     //if the username is valid, adds the user to the local storge
@@ -52,7 +62,7 @@ function checkUser() {
     };
     curUsers.push(newUser)
     localStorage.setItem("users", JSON.stringify(curUsers))
-
     console.log(curUsers);
+    return true;
 }
 

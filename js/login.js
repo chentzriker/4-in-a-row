@@ -7,6 +7,10 @@ log_in.addEventListener("click", checkUser);
 
 function checkUser () {
     console.log("entered")
+    let FailedLogin = 0
+    if (FailedLogin>=3){
+
+    }
     const name = document.getElementById("Username").value;
     const password = document.getElementById("Password").value;
     console.log(name)
@@ -19,4 +23,5 @@ function checkUser () {
         }
     }
     alert ("one field or more is wrong")
+    FailedLogin++
 }
