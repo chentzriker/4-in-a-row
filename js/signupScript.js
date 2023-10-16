@@ -1,15 +1,30 @@
 
-document.getElementById("submit").addEventListener("click", checkUser);
+document.getElementById("submit").addEventListener("click", function (event) {
+    event.preventDefault()
+    checkUser()
+});
 
-let users = {}; //local storge
+//local storge users = [{username: '' , password: ''}, .....]
+// birthday: document.getElementById("birthday").value
 function checkUser() {
-    console.log("jdnd")
-    const user = {
+    let currUsername = document.getElementById("username").value;
+    let curUsers = JSON.parse(localStorage.getItem('users'));
+    if (curUsers == null) {
+        curUsers = []
+    }
+    for (let i = 0; i < curUsers.length; i++) {
+        if (curUsers[i].username == currUsername) {
+            alert("this username already exists")
+            return
+        }
+    }
+    const newUser = {
         username: document.getElementById("username").value,
         password: document.getElementById("password").value,
-        birthday: document.getElementById("birthday").value
     };
-    console.log(user);
-    console.log(document.getElementById("username").value)
-    
+    curUsers.push(newUser)
+    localStorage.setItem("users",JSON.stringify(curUsers))
+
+    console.log(curUsers);
 }
+
