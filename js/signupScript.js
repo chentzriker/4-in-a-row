@@ -11,6 +11,7 @@ document.getElementById("submit").addEventListener("click", function (event) {
 
 //local storge users = [{username: '' , password: ''}, .....]
 
+//! Try to search if you can do check validation in html 
 function checkValidation() {
     //create var of the input
     let currUsername = document.getElementById("username").value;
@@ -41,15 +42,18 @@ function checkValidation() {
     }
     return true;
 }
+//! Consider change function name
 function checkUser() {
     let currUsername = document.getElementById("username").value;
     let curUsers = JSON.parse(localStorage.getItem('users'));
     //makes an empty array if local storge is empty
+    //! Do not use == unless you have good reason, use === instead
     if (curUsers == null) {
         curUsers = []
     }
     //checks if the username is already exists
     for (let i = 0; i < curUsers.length; i++) {
+        //! Do not use == unless you have good reason, use === instead
         if (curUsers[i].username == currUsername) {
             alert("this username already exists")
             return false
