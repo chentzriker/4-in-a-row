@@ -1,18 +1,37 @@
-img:hover {
-        animation-name: expand;
-        animation-duration: 3s;
-      }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.game-img:hover {
+  animation-name: expand;
+  animation-duration: 1s;
+}
 
 @keyframes expand {
-    0% {
-      width:20% ;
-    }
-
-    50% {
-        width: 23%;
-    }
-    
-    100% {
-      width:20% ;
-    }
+  0% {
+    width: 20vw;
   }
+
+  100% {
+    width: 22vw;
+  }
+}
+
+#games-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around
+}
+
+.game-img {
+  width: 20vw;
+  margin-top: 10vh;
+  
+}
+
+figcaption {
+  text-align: center
+}
+
