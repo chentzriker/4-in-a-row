@@ -13,7 +13,7 @@ function checkUser () {
     let usersstr = localStorage.getItem("users");
     let usersarr = JSON.parse(usersstr);
     for (element of usersarr) {
-        if (element.name === name && element.password == password){
+        if (element.username === name && element.password == password){
              window.location.href = "../html/gamemenu.html"
              return;
         }
