@@ -1,8 +1,8 @@
 // let arr = [{name:"chen", password:123}, {name:"efrat", password:1234}];
 // let item = JSON.stringify(arr)
 // localStorage.setItem("users",item)
-const log_in = document.getElementById("enter");
-log_in.addEventListener("click", checkUser);
+document.getElementById("submit").addEventListener("click", checkUser);
+
 
 
 function checkUser () {
