@@ -1,5 +1,6 @@
 let board = [];
 
+//! Change function name
 function createDivs(rows, columns) {
     for (let i = 0; i < columns; i++) {
         console.log("entered")
@@ -28,7 +29,8 @@ function createDivs(rows, columns) {
 
 }
 createDivs(6, 7);
-console.log(board)
+//! Remove logs
+console.log(board) 
 
 //not finished, אמור לסמן את הריבוע בצבע
 function turn() {
