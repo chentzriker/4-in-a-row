@@ -1,26 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>game menu</title>
     <link href="../css/gamemenu.css" rel="stylesheet">
+    <link href="../css/mainstyle.css" rel="stylesheet">
 </head>
+
+<header>
+    <nav id="navbar-con">
+        <a href="./login.html" id="logout"><img id="logout-icon" src="../images/logout-icon.png"></a>
+        <img id="logo-img" src="../images/logo.png" alt="our logo">
+    </nav>
+</header>
+
 <body>
-    <figure>
-        <img src="../images/4inarow.png" alt="the 4 in a row game" style="width:20%">
-        <figcaption>4 in a row</figcaption>
-      </figure>
+    <nav id="games-container">
+        <figure>
+            <a href="./4inarow.html">
+            <img class="game-img" src="../images/4inarow.png" alt="the 4 in a row game">
+            </a>
+            <figcaption>4 in a row</figcaption>
+        </figure>
 
-      <figure>
-        <img src="../images/snake-game.jpg" alt="the snake game" style="width:20%">
-        <figcaption>snake</figcaption>
-      </figure>
+        <figure>
+            <img class="game-img unavailable" src="../images/snake-game.jpg" alt="the snake game">
+            <figcaption>snake</figcaption>
+        </figure>
 
-      <figure>
-        <img src="../images/Tic-Tac-Toe.jpg" alt="tic tac toe" style="width:20%">
-        <figcaption>Tic-Tac-Toe</figcaption>
-      </figure>
-
+        <figure>
+            <img class="game-img unavailable" src="../images/Tic-Tac-Toe.jpg" alt="tic tac toe">
+            <figcaption>Tic-Tac-Toe</figcaption>
+        </figure>
+    </nav>
 </body>
+
 </html>
