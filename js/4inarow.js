@@ -9,6 +9,8 @@ function createDivs(rows, columns) {
             let newElement = document.createElement("div")
             newElement.classList.add("w")
             newElement.classList.add(i)
+            document.getElementById("container").appendChild(newElement)
+            newElement.addEventListener("click", turn)
             row.push(newElement)
             if (j==(rows-1)){
                 board.push(row);
@@ -18,3 +20,8 @@ function createDivs(rows, columns) {
     }
 }
 createDivs(6,7);
+
+//not finished, אמור לסמן את הריבוע בצבע
+function turn () {
+
+}
