@@ -1,10 +1,8 @@
-// let arr = [{name:"chen", password:123}, {name:"efrat", password:1234}];
-// let item = JSON.stringify(arr)
-// localStorage.setItem("users",item)
+
 //! Consider change function name
 const log_in = document.getElementById("enter");
 log_in.addEventListener("click", checkUserExistence);
-
+let userEntered = null;
 //! Consider change function name
 
 function checkUserExistence () {
@@ -18,6 +16,7 @@ function checkUserExistence () {
     const usersarr = JSON.parse(usersstr);
     for (element of usersarr) {
         if (element.username === name && element.password == password){
+            // userEntered = name
              window.location.href = "../html/gamemenu.html"
              return;
         }
