@@ -6,7 +6,7 @@
 
 .game-img:hover {
   animation-name: expand;
-  animation-duration: 1s;
+  animation-duration: 2s;
 }
 
 @keyframes expand {
