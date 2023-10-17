@@ -10,7 +10,7 @@ function createGameBoard(rows, columns) {
             newElement.classList.add(i)
             document.getElementById("container").appendChild(newElement)
             column.push(newElement)
-            newElement.addEventListener("click", function () { turnConvertColor(column) })
+            newElement.addEventListener("click", function () { turnConvertColor(column, i) })
             board.push(column);
         }
         let container = document.getElementById("container")
@@ -21,7 +21,7 @@ function createGameBoard(rows, columns) {
 }
 createGameBoard(6, 7);
 let count = 1;
-function turnConvertColor(arrCol) {
+function turnConvertColor(arrCol, col) {
     for (let i = arrCol.length - 1; i >= 0; i--) {
         if (arrCol[i].classList.contains("white")) {
             arrCol[i].classList.remove("white");
@@ -31,8 +31,11 @@ function turnConvertColor(arrCol) {
             else {
                 arrCol[i].classList.add("red")
             }
+            chenFunc(col, i) //row and col of the cell
             count++;
             break;
         }
     }
+}
+function chenFunc(col, row) {
 }
