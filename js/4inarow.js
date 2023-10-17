@@ -28,6 +28,7 @@ function turnConvertColor(arrCol, col) {
             arrCol[i].classList.remove("white");
             if (count % 2 == 0) {
                 arrCol[i].classList.add("yellow")
+                console.log('hi')
             }
             else {
                 arrCol[i].classList.add("red")
@@ -38,30 +39,83 @@ function turnConvertColor(arrCol, col) {
         }
     }
 }
+
+
 function chenFunc(col, row) {
-    console.log("column:" + col);
-    console.log("row:" + row);
+    // console.log("column:" + col);
+    // console.log("row:" + row);
     //saves the div that was colored now
     let coloredNow = board[col][row];
-    console.log('coloredNow: ', coloredNow);
     //counts how many of the same color 
-    let counter = 0;
-    let colorToCkek = null;
-    if (count%2===0){
-        colorToCkek = "yellow"
+    let colorToCheck = null;
+    if (count % 2 === 0) {
+        colorToCheck = "yellow"
     } else {
-        colorToCkek = "red"
+        colorToCheck = "red"
     }
-    //check all cells under coloredNow and count how much are the same color
+    //checks if there are 4 in the column
+    if (checkColumn(row,col,colorToCheck)){
+        return;
+    }
+
+    if (checkRow(row,col,colorToCheck)){
+        return;
+    }
+}
+
+//checks if there are 4 in the column
+function checkColumn(row,col,color){
+    let counter = 0;
     for (let d = row; d < board[col].length; d++) {
-        if (board[col][d].classList.contains(colorToCkek)){
+        //add one if the div has a class of the same color
+        if (board[col][d].classList.contains(color)) {
             counter++
-            console.log(counter)
         }
-        if (counter >= 4 ) {
-        alert (`${colorToCkek} won`)
-        return
-        } 
-        // counter = 0;
+        else {
+            return false
+        }
+        if (counter >= 4) {
+            board[col][d].classList.add(color)
+            console.log(board[col][d].classList);
+            console.log(`${color} won`)
+            return true
+        }
     }
+    return false
+}
+
+//checks if there are 4 in the row
+function checkRow(row,col,color){
+    let counter = 0;
+    let checkFromHere = null;
+    for (let s = col; s < board.length; s++){
+        //maybe add counting here so we wont need to repeat pointless
+        if (!board[s][row].classList.contains(color)){
+            checkFromHere = s-1;
+            break
+        } 
+        else {
+            counter++
+        }
+        if (counter >= 4) {
+            alert(`${color} won`)
+            return true
+        }
+    }
+    counter = 0;
+    for (let s = checkFromHere; s>=0; s--) {
+        //add one if the div has a class of the same color
+        // console.log('board[s][row]: ', board[s][row]);
+        if (board[s][row].classList.contains(color)) {
+            counter++
+        }
+        else {
+            return false
+        }
+        if (counter >= 4) {
+            alert(`${color} won`)
+            return true
+        }
+    }
+    return false
 }
