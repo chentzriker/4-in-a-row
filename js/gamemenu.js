@@ -10,9 +10,7 @@ function unavailablePic(){
 }
 
 function logOut(){
-    // console.log('userEntered: ', userEntered);
-    // userEntered = null;
-    // console.log(userEntered);
+    localStorage.removeItem("logedIn")
     window.location.href = "../html/login.html"
     return;
 }

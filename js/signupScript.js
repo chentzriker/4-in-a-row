@@ -4,8 +4,7 @@ document.getElementById("submit").addEventListener("click", function (event) {
     if (checkValidation()) {
         //if user created successfully moving to the manu page
         if (createUser()){
-            // userEntered = currUsername
-            // console.log(currname);
+            // console.log(currUsername);
             window.location.href = "../html/gamemenu.html"
             return;
         }
@@ -45,7 +44,7 @@ function checkValidation() {
     }
     return true;
 }
-//! Consider change function name
+
 function createUser() {
     const currUsername = document.getElementById("username").value;
     let curUsers = JSON.parse(localStorage.getItem('users'));
@@ -56,7 +55,6 @@ function createUser() {
     }
     //checks if the username is already exists
     for (let i = 0; i < curUsers.length; i++) {
-        //! Do not use == unless you have good reason, use === instead
         if (curUsers[i].username === currUsername) {
             alert("this username already exists")
             return false
