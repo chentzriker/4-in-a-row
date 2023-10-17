@@ -54,17 +54,21 @@ function chenFunc(col, row) {
         colorToCheck = "red"
     }
     //checks if there are 4 in the column
-    if (checkColumn(row,col,colorToCheck)){
+    if (checkColumn(row, col, colorToCheck)) {
         return;
     }
 
-    if (checkRow(row,col,colorToCheck)){
+    if (checkRow(row, col, colorToCheck)) {
         return;
     }
+    if (checkSLant(row, col, colorToCheck)) {
+        return;
+    }
+
 }
 
 //checks if there are 4 in the column
-function checkColumn(row,col,color){
+function checkColumn(row, col, color) {
     let counter = 0;
     for (let d = row; d < board[col].length; d++) {
         //add one if the div has a class of the same color
@@ -85,27 +89,26 @@ function checkColumn(row,col,color){
 }
 
 //checks if there are 4 in the row
-function checkRow(row,col,color){
+function checkRow(row, col, color) {
     let counter = 0;
-    let checkFromHere = null;
-    for (let s = col; s < board.length; s++){
+    let indexRightCol = board.length - 1; //with the same color 
+    for (let s = col; s < board.length; s++) {
         //maybe add counting here so we wont need to repeat pointless
-        if (!board[s][row].classList.contains(color)){
-            checkFromHere = s-1;
+        if (!board[s][row].classList.contains(color)) {
+            indexRightCol = s - 1;
             break
-        } 
+        }
         else {
             counter++
         }
         if (counter >= 4) {
-            alert(`${color} won`)
+            console.log(`${color} won`)
             return true
         }
     }
     counter = 0;
-    for (let s = checkFromHere; s>=0; s--) {
-        //add one if the div has a class of the same color
-        // console.log('board[s][row]: ', board[s][row]);
+    for (let s = indexRightCol; s >= 0; s--) {
+        //add one if the div has a class of the same color 
         if (board[s][row].classList.contains(color)) {
             counter++
         }
@@ -113,9 +116,50 @@ function checkRow(row,col,color){
             return false
         }
         if (counter >= 4) {
-            alert(`${color} won`)
+            console.log(`${color} won`)
             return true
         }
     }
     return false
 }
+
+//I think its okay but we should check
+function checkSLant(row, col, color) {
+    let counter = 0;
+    let indexRightCol = board.length - 1;
+    let indexHigherRow = board[0].length - 1;
+    let j;
+    for (let i = col, j = row; i < board.length && j >= 0; i++, j--) {
+        console.log('first board[i][j]: ', board[i][j]);
+        if (!board[i][j].classList.contains(color)) {
+            indexRightCol = i - 1;
+            indexHigherRow = j + 1;
+            break;
+        }
+        else {
+            counter++
+        }
+        if (counter >= 4) {
+            console.log(`${color} won`)
+            return true
+        }
+    }
+    counter = 0;
+    for (let i = indexRightCol, j = indexHigherRow; i >=0 && j <board[0].length; i--, j++) {
+        console.log('second board[i][j]: ', board[i][j]);
+        if (board[i][j].classList.contains(color)) {
+            counter++
+        }
+        else {
+            return false
+        }
+        if (counter >= 4) {
+            console.log(`${color} won`)
+            return true;
+        }
+    }
+return false
+}
+
+
+
