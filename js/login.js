@@ -2,7 +2,7 @@
 // let item = JSON.stringify(arr)
 // localStorage.setItem("users",item)
 document.getElementById("submit").addEventListener("click", checkUserExistence);
-
+let userEntered = null;
 function checkUserExistence () {
     let FailedLogin = 0
     if (FailedLogin>=3){
@@ -14,6 +14,7 @@ function checkUserExistence () {
     const usersarr = JSON.parse(usersstr);
     for (element of usersarr) {
         if (element.username === name && element.password == password){
+            // userEntered = name
              window.location.href = "../html/gamemenu.html"
              return;
         }

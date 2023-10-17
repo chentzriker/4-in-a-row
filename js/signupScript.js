@@ -3,9 +3,11 @@ document.getElementById("submit").addEventListener("click", function (event) {
     event.preventDefault()
     if (checkValidation()) {
         //if user created successfully moving to the manu page
-        if (checkUser())
-        window.location.href = "../html/gamemenu.html"
-        return;
+        if (createUser()){
+            // userEntered = currUsername
+            window.location.href = "../html/gamemenu.html"
+            return;
+        }
     }
 });
 
@@ -15,7 +17,7 @@ document.getElementById("submit").addEventListener("click", function (event) {
 function checkValidation() {
     //create var of the input
     const currUsername = document.getElementById("username").value;
-    const curPassword = document.getElementById("password").value;
+    let curPassword = document.getElementById("password").value;
     const curAge = document.getElementById("age").value;
 
     //check validation of email
@@ -43,9 +45,9 @@ function checkValidation() {
     return true;
 }
 //! Consider change function name
-function checkUser() {
+function createUser() {
     const currUsername = document.getElementById("username").value;
-    const curUsers = JSON.parse(localStorage.getItem('users'));
+    let curUsers = JSON.parse(localStorage.getItem('users'));
     //makes an empty array if local storge is empty
     //! Do not use == unless you have good reason, use === instead
     if (curUsers === null) {
