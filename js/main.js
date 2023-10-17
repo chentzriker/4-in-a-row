@@ -1,4 +1,5 @@
-if (userEntered === null){
+
+if (userEntered === null ){
     window.location.href = "../html/login.html"
-    return;
+    number++
 }

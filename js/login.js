@@ -1,7 +1,5 @@
-// let arr = [{name:"chen", password:123}, {name:"efrat", password:1234}];
-// let item = JSON.stringify(arr)
-// localStorage.setItem("users",item)
 document.getElementById("submit").addEventListener("click", checkUserExistence);
+
 let userEntered = null;
 function checkUserExistence () {
     let FailedLogin = 0

@@ -5,6 +5,7 @@ document.getElementById("submit").addEventListener("click", function (event) {
         //if user created successfully moving to the manu page
         if (createUser()){
             // userEntered = currUsername
+            // console.log(currname);
             window.location.href = "../html/gamemenu.html"
             return;
         }
