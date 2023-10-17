@@ -1,15 +1,15 @@
-//document.getElementById("logout-icon").addEventListener("click", logOut)
-const unavailableGames= document.getElementsByClassName("unavailable")
+document.getElementById("logout-icon").addEventListener("click", logOut)
+const unavailableGames = document.getElementsByClassName("unavailable")
 for (let i = 0; i < unavailableGames.length; i++) {
     unavailableGames[i].addEventListener("mouseover", unavailablePic)
 }
 
 
-function unavailablePic(){
+function unavailablePic() {
     //unavailableGames[i].src
 }
 
-function logOut(){
+function logOut() {
     localStorage.removeItem("logedIn")
     window.location.href = "../html/login.html"
     return;

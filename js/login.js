@@ -5,10 +5,10 @@ let failedLogin = 0
 function checkUserExistence() {
     const name = document.getElementById("Username").value;
     const password = document.getElementById("Password").value;
-    const usersstr = localStorage.getItem("users");
-    const usersarr = JSON.parse(usersstr);
-    for (element of usersarr) {
-        if (element.username === name && element.password === password) {
+    const usersStr = localStorage.getItem("users");
+    const usersArr = JSON.parse(usersStr);
+    for (element of usersArr) {
+        if (element.username === name && element.password == password) {
             let logedinUsers = JSON.parse(localStorage.getItem('logedIn'));
             if (logedinUsers === null) {
                 logedinUsers = []
