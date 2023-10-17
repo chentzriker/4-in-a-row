@@ -1,28 +1,50 @@
 document.getElementById("submit").addEventListener("click", checkUserExistence);
 // localStorage.setItem("logedin","[]")
 let userEntered = null;
-function checkUserExistence () {
-    let FailedLogin = 0
-    if (FailedLogin>=3){
-
-    }
+let failedLogin = 0
+function checkUserExistence() {
     const name = document.getElementById("Username").value;
     const password = document.getElementById("Password").value;
     const usersstr = localStorage.getItem("users");
     const usersarr = JSON.parse(usersstr);
     for (element of usersarr) {
-        if (element.username === name && element.password == password){
+        if (element.username === name && element.password === password) {
             let logedinUsers = JSON.parse(localStorage.getItem('logedIn'));
             if (logedinUsers === null) {
                 logedinUsers = []
             }
             logedinUsers.push(name)
             const loginginfinall = JSON.stringify(logedinUsers)
-            localStorage.setItem("logedIn",loginginfinall)
-             window.location.href = "../html/gamemenu.html"
-             return;
+            localStorage.setItem("logedIn", loginginfinall)
+            window.location.href = "../html/gamemenu.html"
+            return;
         }
     }
-    alert ("one field or more is wrong")
-    FailedLogin++
+    alert("one field or more is wrong")
+    failedLogin++
+    console.log('failedLogin: ', failedLogin);
+
+    if (failedLogin === 3) {
+        disableButtonTemporarily(document.getElementById("submit"));
+        failedLogin = 0;
+    }
+
+}
+function disableButtonTemporarily(buttonElement) {
+    // Disable the button
+    buttonElement.disabled = true;
+    buttonElement.textContent='disable'
+    // Enable the button after 10 seconds
+    let counter = 10;
+    const intervalId= setInterval(countdown, 1000)
+    function countdown(){
+        document.getElementById("timeout").textContent=`You can try again in ${counter}s`
+        counter--;
+        if (counter < 0) {
+            clearInterval(intervalId)
+            buttonElement.disabled = false;
+            buttonElement.textContent='log in'
+            document.getElementById("timeout").textContent=""
+        }
+    }
 }
