@@ -1,6 +1,6 @@
 let board = [];
-
-function createGameBoard(rows, columns) {
+let inARow = null;
+function createGameBoard(rows, columns, level) {
     for (let i = 0; i < columns; i++) {
         let column = [];
         for (let j = 0; j < rows; j++) {
@@ -11,15 +11,16 @@ function createGameBoard(rows, columns) {
             document.getElementById("container").appendChild(newElement)
             column.push(newElement)
             newElement.addEventListener("click", function () { turnConvertColor(column, i) })
-            board.push(column);
         }
+        board.push(column);
         let container = document.getElementById("container")
         container.style.gridTemplateColumns = `repeat(${columns},auto)`
         container.style.gridTemplateRows = `repeat(${rows},auto)`
+        inARow = level;
 
     }
 }
-createGameBoard(6, 7);
+createGameBoard(6, 7, 4);
 let count = 1;
 function turnConvertColor(arrCol, col) {
     for (let i = arrCol.length - 1; i >= 0; i--) {
@@ -38,4 +39,29 @@ function turnConvertColor(arrCol, col) {
     }
 }
 function chenFunc(col, row) {
+    console.log("column:" + col);
+    console.log("row:" + row);
+    //saves the div that was colored now
+    let coloredNow = board[col][row];
+    console.log('coloredNow: ', coloredNow);
+    //counts how many of the same color 
+    let counter = 0;
+    let colorToCkek = null;
+    if (count%2===0){
+        colorToCkek = "yellow"
+    } else {
+        colorToCkek = "red"
+    }
+    //check all cells under coloredNow and count how much are the same color
+    for (let d = row; d < board[col].length; d++) {
+        if (board[col][d].classList.contains(colorToCkek)){
+            counter++
+            console.log(counter)
+        }
+        if (counter >= 4 ) {
+        alert (`${colorToCkek} won`)
+        return
+        } 
+        // counter = 0;
+    }
 }
