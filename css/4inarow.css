@@ -3,23 +3,28 @@ html, body {
     height: 100%;
 }
 
-
+.white, .yellow, .red{
+    margin: 5px;
+    border-radius: 50%;
+}
 .white {
     background-color: white;
-    margin: 5px;
+    
 }
 .yellow{
     background-color: yellow;
-    margin: 5px;
 }
 .red{
     background-color: red;
-    margin: 5px;
 }
 #container {
+    margin-top: 5vh;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
     background-color: blue;
-    height: 90%;
-    width: 70%;
+    height: 80vh;
+    width: 50vw;
     display: grid;
     grid-auto-flow: column;
 }
