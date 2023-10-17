@@ -5,6 +5,7 @@ function createGameBoard(rows, columns, level) {
         let column = [];
         for (let j = 0; j < rows; j++) {
             let newElement = document.createElement("div")
+            //! Try to add all classes at once :)
             newElement.classList.add("blank")
             newElement.classList.add("white")
             newElement.classList.add(i)
@@ -28,7 +29,7 @@ function turnConvertColor(arrCol, col) {
             arrCol[i].classList.remove("white");
             if (count % 2 === 0) {
                 arrCol[i].classList.add("yellow")
-                console.log('hi')
+                console.log('hi') // ! remove
             }
             else {
                 arrCol[i].classList.add("red")
@@ -40,8 +41,9 @@ function turnConvertColor(arrCol, col) {
     }
 }
 
-
+//! Change the function name
 function chenFunc(col, row) {
+    //! remove logs and variables you don't use
     // console.log("column:" + col);
     // console.log("row:" + row);
     //saves the div that was colored now
@@ -72,14 +74,17 @@ function checkColumn(row, col, color) {
     let counter = 0;
     for (let d = row; d < board[col].length; d++) {
         //add one if the div has a class of the same color
+        //! Do the else before - I will explain
         if (board[col][d].classList.contains(color)) {
             counter++
         }
         else {
             return false
         }
+        //! Why >= ? it need to === to the number that we check in this level
         if (counter >= 4) {
             board[col][d].classList.add(color)
+            //! remove
             console.log(board[col][d].classList);
             console.log(`${color} won`)
             return true
