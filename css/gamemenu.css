@@ -5,11 +5,11 @@
 }
 
 .game-img:hover {
-  animation-name: expand;
-  animation-duration: 2s;
+  animation-name: expandGameImg;
+  animation-duration: 1.5s;
 }
 
-@keyframes expand {
+@keyframes expandGameImg {
   0% {
     width: 20vw;
   }
