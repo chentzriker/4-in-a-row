@@ -17,8 +17,8 @@ document.getElementById("submit").addEventListener("click", function (event) {
 function checkValidation() {
     //create var of the input
     const currUsername = document.getElementById("username").value;
-    let curPassword = document.getElementById("password").value;
-    const curAge = document.getElementById("age").value;
+    let currPassword = document.getElementById("password").value;
+    const currAge = document.getElementById("age").value;
 
     //check validation of email
     let usernameRegex = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
@@ -28,17 +28,17 @@ function checkValidation() {
     }
     //check validation of password
     let passwordRegex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{5,}$/
-    if (passwordRegex.exec(curPassword) === null) {
+    if (passwordRegex.exec(currPassword) === null) {
         alert("Password should contain: \n 1. at least one uppercase letter \n 2.at least one lowercase letter\n 3.at least one digit \n 4.should be more than 4 character")
         return false;
     }
     //check if password was confirmed
     const passwordConfirm = document.getElementById("confirm").value;
-    if (passwordConfirm!==curPassword){
+    if (passwordConfirm!==currPassword){
         alert("passwords do not match")
         return false;
     }
-    if (curAge < 15 || curAge > 99) {
+    if (currAge < 15 || currAge > 99) {
         alert("Our site is only available to people between the aged 16-99")
         return false;
     }
@@ -49,7 +49,6 @@ function createUser() {
     const currUsername = document.getElementById("username").value;
     let curUsers = JSON.parse(localStorage.getItem('users'));
     //makes an empty array if local storge is empty
-    //! Do not use == unless you have good reason, use === instead
     if (curUsers === null) {
         curUsers = []
     }

@@ -26,7 +26,7 @@ function turnConvertColor(arrCol, col) {
     for (let i = arrCol.length - 1; i >= 0; i--) {
         if (arrCol[i].classList.contains("white")) {
             arrCol[i].classList.remove("white");
-            if (count % 2 == 0) {
+            if (count % 2 === 0) {
                 arrCol[i].classList.add("yellow")
                 console.log('hi')
             }

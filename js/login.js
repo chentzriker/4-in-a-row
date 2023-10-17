@@ -1,11 +1,8 @@
 document.getElementById("submit").addEventListener("click", checkUserExistence);
 // localStorage.setItem("logedin","[]")
 let userEntered = null;
+let failedLogin = 0
 function checkUserExistence() {
-    let FailedLogin = 0
-    if (FailedLogin >= 3) {
-
-    }
     const name = document.getElementById("Username").value;
     const password = document.getElementById("Password").value;
     const usersStr = localStorage.getItem("users");
@@ -24,5 +21,30 @@ function checkUserExistence() {
         }
     }
     alert("one field or more is wrong")
-    FailedLogin++
+    failedLogin++
+    console.log('failedLogin: ', failedLogin);
+
+    if (failedLogin === 3) {
+        disableButtonTemporarily(document.getElementById("submit"));
+        failedLogin = 0;
+    }
+
+}
+function disableButtonTemporarily(buttonElement) {
+    // Disable the button
+    buttonElement.disabled = true;
+    buttonElement.textContent='disable'
+    // Enable the button after 10 seconds
+    let counter = 10;
+    const intervalId= setInterval(countdown, 1000)
+    function countdown(){
+        document.getElementById("timeout").textContent=`You can try again in ${counter}s`
+        counter--;
+        if (counter < 0) {
+            clearInterval(intervalId)
+            buttonElement.disabled = false;
+            buttonElement.textContent='log in'
+            document.getElementById("timeout").textContent=""
+        }
+    }
 }
