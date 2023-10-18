@@ -14,6 +14,7 @@ level5.addEventListener("click", function () { createGameBoard(7, 8, 5) })
 createGameBoard(6, 7, 4)
 function createGameBoard(rowsNum, columnsNum, level) {
     emptyBoard()
+    board = []
     rows = rowsNum;
     cols = columnsNum;
     numInRow = level;
@@ -109,6 +110,7 @@ function emptyBoard() {
     for (let i = 0; i < board.length; i++) {
         for (let j = 0; j < board[i].length; j++) {
             board[i][j].remove();
+
         }
     }
     count = 0
