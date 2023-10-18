@@ -9,7 +9,7 @@ function checkUserExistence() {
     const usersArr = JSON.parse(usersStr);
     for (element of usersArr) {
         //! Use === instead of ==
-        if (element.username === name && element.password == password) {
+        if (element.username === name && element.password === password) {
             //! Each word should start in capital letter
             let logedinUsers = JSON.parse(localStorage.getItem('logedIn'));
             if (logedinUsers === null) {

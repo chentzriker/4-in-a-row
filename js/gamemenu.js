@@ -1,16 +1,8 @@
-document.getElementById("logout-icon").addEventListener("click", logOut)
-const unavailableGames = document.getElementsByClassName("unavailable")
-for (let i = 0; i < unavailableGames.length; i++) {
-    unavailableGames[i].addEventListener("mouseover", unavailablePic)
-}
+location
+document.getElementById("4-inarow").addEventListener("click", function () {
+    location.href = "../html/4inarow.html"
+    createGameBoard(6, 7, 4)
+    console.log("kdfkjd");
+})
 
 
-function unavailablePic() {
-    //unavailableGames[i].src
-}
-//loging out
-function logOut() {
-    localStorage.removeItem("logedIn")
-    window.location.href = "../html/login.html"
-    return;
-}
