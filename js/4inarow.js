@@ -18,6 +18,7 @@ function createGameBoard(rowsNum, columnsNum, level) {
     rows = rowsNum;
     cols = columnsNum;
     numInRow = level;
+    board = [];
     for (let i = 0; i < cols; i++) {
         let column = [];
         for (let j = 0; j < rows; j++) {
