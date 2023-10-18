@@ -11,11 +11,11 @@
 
 @keyframes expandGameImg {
   0% {
-    width: 20vw;
+    width: 30vw;
   }
 
   100% {
-    width: 22vw;
+    width: 32vw;
   }
 }
 
@@ -26,7 +26,7 @@
 }
 
 .game-img {
-  width: 20vw;
+  width: 30vw;
   margin-top: 10vh;
   
 }
@@ -35,3 +35,6 @@ figcaption {
   text-align: center
 }
 
+.hidden{
+  display:none
+}

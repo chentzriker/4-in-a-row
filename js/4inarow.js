@@ -1,23 +1,27 @@
 let board = [];
 let inARow = null;
 //creating the board
-const rows = 6;
-const cols = 7;
-const numInRow = 4;
-createGameBoard(rows, cols, numInRow);
-function createGameBoard(rows, columns, level) {
-    for (let i = 0; i < columns; i++) {
+let rows;
+let cols;
+let numInRow;
+console.log("hi1");
+function createGameBoard(rowsNum, columnsNum, level) {
+    console.log("hi");
+    rows = rowsNum;
+    cols = columnsNum;
+    numInRow = level;
+    for (let i = 0; i < cols; i++) {
         let column = [];
         for (let j = 0; j < rows; j++) {
             let newElement = document.createElement("div")
-            newElement.classList.add("blank" , "white" , i)
+            newElement.classList.add("blank", "white", i)
             document.getElementById("container").appendChild(newElement)
             column.push(newElement)
             newElement.addEventListener("click", function () { turnConvertColor(column, i) })
         }
         board.push(column);
         let container = document.getElementById("container")
-        container.style.gridTemplateColumns = `repeat(${columns},auto)`
+        container.style.gridTemplateColumns = `repeat(${cols},auto)`
         container.style.gridTemplateRows = `repeat(${rows},auto)`
         inARow = level;
 
@@ -95,11 +99,11 @@ function checkColumn(row, col, color) {
     for (let d = row; d < board[col].length; d++) {
         //add one if the div has a class of the same color
         //! Do the else before - I will explain
-        if (board[col][d].classList.contains(color)) {
-            counter++
+        if (!board[col][d].classList.contains(color)) {
+            return false
         }
         else {
-            return false
+            counter++
         }
         if (counter === 4) {
             board[col][d].classList.add(color)

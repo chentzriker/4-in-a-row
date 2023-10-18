@@ -4,3 +4,11 @@
 if (localStorage.getItem("logedIn") === null) {
     window.location.href = "../html/login.html"
 }
+
+document.getElementById("logout-icon").addEventListener("click", logOut)
+
+function logOut() {
+    localStorage.removeItem("logedIn")
+    window.location.href = "../html/login.html"
+    return;
+}
