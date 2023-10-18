@@ -5,7 +5,6 @@ let rows;
 let cols;
 let numInRow;
 let count = 1;
-
 const level3 = document.getElementById("3");
 const level4 = document.getElementById("4");
 const level5 = document.getElementById("5");
@@ -15,6 +14,7 @@ level5.addEventListener("click", function () { createGameBoard(7, 8, 5) })
 createGameBoard(6, 7, 4)
 function createGameBoard(rowsNum, columnsNum, level) {
     emptyBoard()
+    console.log("hi");
     rows = rowsNum;
     cols = columnsNum;
     numInRow = level;
@@ -46,8 +46,8 @@ function turnConvertColor(arrCol, col) {
                 arrCol[i].classList.add("red")
             }
             isCurrPlayerWon(col, i) //row and col of the cell
+            console.log(count)
             count++;
-
             break;
         }
     }
@@ -65,7 +65,6 @@ function isCurrPlayerWon(col, row) {
     }
     //checks if there are 4 in the column
     if (checkColumn(row, col, colorToCheck)) {
-        console.log("winning");
         winingMessage(`${colorToCheck} won!`)
         return;
     }
@@ -102,7 +101,6 @@ function resetGame() {
             }
         }
     }
-    count=0;
 }
 
 //remove all white divs from board
@@ -110,8 +108,10 @@ function emptyBoard() {
     for (let i = 0; i < board.length; i++) {
         for (let j = 0; j < board[i].length; j++) {
             board[i][j].remove();
+
         }
     }
+    count = 0
     return
     count=0;
 
@@ -176,7 +176,7 @@ function check1SLant(row, col, color) { // slant: /
     let indexHigherRow = row;
     let j;
     for (let i = col, j = row; i < board.length && j >= 0; i++, j--) {
-        console.log('1first board[i][j]: ', board[i][j]);
+        // console.log('1first board[i][j]: ', board[i][j]);
 
         if (!board[i][j].classList.contains(color)) {
             indexRightCol = i - 1;
@@ -212,7 +212,7 @@ function check2SLant(row, col, color) { // slant: \
     let indexHigherRow = row;
     let j;
     for (let i = col, j = row; i >= 0 && j >= 0; i--, j--) {
-        console.log('2first board[i][j]: ', board[i][j]);
+        // console.log('2first board[i][j]: ', board[i][j]);
         if (!board[i][j].classList.contains(color)) {
             indexLeftCol = i + 1;
             indexHigherRow = j + 1;
@@ -227,7 +227,7 @@ function check2SLant(row, col, color) { // slant: \
     }
     counter = 0;
     for (let i = indexLeftCol, j = indexHigherRow; i < board.length && j < board[0].length; i++, j++) {
-        console.log('2second board[i][j]: ', board[i][j]);
+        // console.log('2second board[i][j]: ', board[i][j]);
         if (board[i][j].classList.contains(color)) {
             counter++
         }
