@@ -4,8 +4,15 @@ let inARow;
 let rows;
 let cols;
 let numInRow;
-console.log("hi1");
+const level3 = document.getElementById("3");
+const level4 = document.getElementById("4");
+const level5 = document.getElementById("5");
+level3.addEventListener("click", function () { createGameBoard(5, 6, 3) })
+level4.addEventListener("click", function () { createGameBoard(6, 7, 4) })
+level5.addEventListener("click", function () { createGameBoard(7, 8, 5) })
+createGameBoard(6, 7, 4)
 function createGameBoard(rowsNum, columnsNum, level) {
+    emptyBoard()
     console.log("hi");
     rows = rowsNum;
     cols = columnsNum;
@@ -23,7 +30,7 @@ function createGameBoard(rowsNum, columnsNum, level) {
         let container = document.getElementById("container")
         container.style.gridTemplateColumns = `repeat(${cols},auto)`
         container.style.gridTemplateRows = `repeat(${rows},auto)`
-        inARow = level;
+        numInRow = level;
 
     }
 }
@@ -59,30 +66,26 @@ function isCurrPlayerWon(col, row) {
     }
     //checks if there are 4 in the column
     if (checkColumn(row, col, colorToCheck)) {
-        stopGame()
-        winingMessage(`${colorToCheck} won`)
+        winingMessage(`${colorToCheck} won!`)
         return;
     }
     if (checkRow(row, col, colorToCheck)) {
-        // stopGame()
-        winingMessage(`${colorToCheck} won`)
+        winingMessage(`${colorToCheck} won!`)
         return;
     }
     if (check1SLant(row, col, colorToCheck)) {
-        // stopGame()
-        winingMessage(`${colorToCheck} won`)
+        winingMessage(`${colorToCheck} won!`)
         return;
     }
     if (check2SLant(row, col, colorToCheck)) {
-        // stopGame()
-        winingMessage(`${colorToCheck} won`)
+        winingMessage(`${colorToCheck} won!`)
         return;
     }
 }
 
 //Resets the game in case of a tie or win
 function resetGame() {
-    if (document.getElementById("message-box")){
+    if (document.getElementById("message-box")) {
         document.getElementById("message-box").remove();
     }
     for (let i = 0; i < cols; i++) {
@@ -98,6 +101,17 @@ function resetGame() {
             }
         }
     }
+}
+
+//remove all white divs from board
+function emptyBoard() {
+    for (let i = 0; i < board.length; i++) {
+        for (let j = 0; j < board[i].length; j++) {
+            board[i][j].remove();
+        }
+    }
+    return
+
 }
 
 
@@ -237,14 +251,4 @@ function winingMessage(message) {
     playAgain.textContent = "play again";
     messageBox.appendChild(playAgain)
     playAgain.addEventListener("click", resetGame)
-}
-
-//after the popup shows, the function prevent the players to color more circles
-function stopGame() {
-    for (let i = 0; i < cols; i++) {
-        for (let j = 0; j < rows; j++) {
-        //     (board[i][j]).removeEventListener("click", )
-         }
-    }
-    return
 }
