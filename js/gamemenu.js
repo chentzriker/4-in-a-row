@@ -8,7 +8,7 @@ for (let i = 0; i < unavailableGames.length; i++) {
 function unavailablePic() {
     //unavailableGames[i].src
 }
-
+//loging out
 function logOut() {
     localStorage.removeItem("logedIn")
     window.location.href = "../html/login.html"

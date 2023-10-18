@@ -24,8 +24,9 @@ function createGameBoard(rows, columns, level) {
     }
 }
 
+//seppuse to clear the board so we could build a new one
+function clearBoard(){}
 
-function clearBoard()
 let count = 1;
 function turnConvertColor(arrCol, col) {
     for (let i = arrCol.length - 1; i >= 0; i--) {
@@ -37,17 +38,16 @@ function turnConvertColor(arrCol, col) {
             else {
                 arrCol[i].classList.add("red")
             }
-            chenFunc(col, i) //row and col of the cell
+            checkIfWon(col, i) //col and row of the cell
             count++;
             break;
         }
     }
 }
 
+
 //! Change the function name
-function chenFunc(col, row) {
-    // console.log("column:" + col);
-    // console.log("row:" + row);
+function checkIfWon(col, row) {
     //saves the div that was colored now
     let coloredNow = board[col][row];
     //counts how many of the same color 
@@ -60,10 +60,12 @@ function chenFunc(col, row) {
 
     //checks if there are 4 in the column
     if (checkColumn(row, col, colorToCheck)) {
+        winingMessage(`${colorToCheck} won`)
         return;
     }
 
     if (checkRow(row,col,colorToCheck)){
+        winingMessage(`${colorToCheck} won`)
         return;
     }
 
@@ -165,5 +167,17 @@ function checkSLant(row, col, color) {
 return false
 }
 
-
+function winingMessage(message){
+    console.log("entered")
+   let messageBox = document.createElement("div");
+   messageBox.setAttribute("id","message-box")
+   document.body.appendChild(messageBox)
+   let winingMessage = document.createElement("h2");
+   messageBox.appendChild(winingMessage)
+   winingMessage.textContent = message;
+   let playAgain = document.createElement("p");
+   playAgain.textContent = "play again";
+   messageBox.appendChild(playAgain)
+   playAgain.addEventListener("click",clearBoard)
+}
 
