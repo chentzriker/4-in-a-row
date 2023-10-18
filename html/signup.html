@@ -1,38 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Signup</title>
-    <link href="../css/signup-in.css" rel="stylesheet">
-    <link href="../css/mainstyle.css" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Signup</title>
+  <link href="../css/signup-in.css" rel="stylesheet">
+  <link href="../css/mainstyle.css" rel="stylesheet">
 </head>
 <header>
   <nav id="navbar-con">
-      <img id="logout-icon" src="../images/logout-icon.png">
-      <img id="logo-img" src="../images/logo.png" alt="our logo">
+    <img id="logout-icon" src="../images/logout-icon.png">
+    <img id="logo-img" src="../images/logo.png" alt="our logo">
   </nav>
 </header>
-<body>
-    <form >
-        <fieldset class="form">
-          <legend><h1 id="form-head">sign up</h1></legend>
-          <label for="username">Username-email</label><br>
-          <input type="email" id="username" name="username" autocomplete="username"><br><br>
-          <div class="tooltip">
-          <label for="password">Password</label><br>
-          <input type="password" id="password" name="password" autocomplete="new-password"><br><br>
-            <p  class="tooltiptext">Password should contain: <br> 1. at least one uppercase letter <br> 2.at least one lowercase letter<br> 3.at least one digit <br> 4.should be more than 4 character</p>
-          </div>
-          <label for="confirm">Confirm password</label><br>
-          <input type="password" id="confirm" name="confirm-password" autocomplete="confirm-password"><br><br>
-          <label for="age">Age</label><br>
-          <input type="number" id="age" name="age" autocomplete="age"><br><br>
-          <button id="submit">sign up</button> <br><br>
-          <a href="./login.html">already have an account</a>
-        </fieldset>
-      </form>
 
-      <script src="../js/signupScript.js"></script> 
+<body>
+  <form>
+    <fieldset class="form">
+      <legend>
+        <h1 id="form-head">sign up</h1>
+      </legend>
+
+      <label for="username">Username-email</label><br>
+      <input type="email" id="username" name="username" autocomplete="username"><br><br>
+
+      <div class="tooltip">
+        <label for="password">Password</label><br>
+        <input type="password" id="password" name="password" autocomplete="new-password"><br><br>
+        <p class="tooltiptext">Password should contain: <br> 1. at least one uppercase letter <br> 2.at least one
+          lowercase letter<br> 3.at least one digit <br> 4.should be more than 4 character</p>
+      </div>
+
+      <label for="confirm">Confirm password</label><br>
+      <input type="password" id="confirm" name="confirm-password" autocomplete="confirm-password"><br><br>
+
+      <label for="age">Age</label><br>
+      <input type="number" id="age" name="age" autocomplete="age"><br><br>
+
+      <button id="submit">sign up</button> <br><br>
+      <a href="./login.html">already have an account</a>
+    </fieldset>
+  </form>
+
+  <script src="../js/signupScript.js"></script>
 </body>
+
 </html>
