@@ -1,4 +1,5 @@
 document.getElementById("submit").addEventListener("click", checkUserExistence);
+//! Remove
 // localStorage.setItem("logedin","[]")
 let userEntered = null;
 let failedLogin = 0
@@ -8,7 +9,9 @@ function checkUserExistence() {
     const usersStr = localStorage.getItem("users");
     const usersArr = JSON.parse(usersStr);
     for (element of usersArr) {
+        //! Use === instead of ==
         if (element.username === name && element.password == password) {
+            //! Each word should start in capital letter
             let logedinUsers = JSON.parse(localStorage.getItem('logedIn'));
             if (logedinUsers === null) {
                 logedinUsers = []
@@ -24,6 +27,7 @@ function checkUserExistence() {
     failedLogin++
 
     if (failedLogin === 3) {
+        //! Why do you need to sent the element? why wont get it inside the function
         disableButtonTemporarily(document.getElementById("submit"));
         failedLogin = 0;
     }
@@ -32,7 +36,8 @@ function checkUserExistence() {
 function disableButtonTemporarily(buttonElement) {
     // Disable the button
     buttonElement.disabled = true;
-    buttonElement.textContent='disable'
+    //! Though if you really want it to show disable? Is it not fine if it just act like disable? Your choose 
+    buttonElement.textContent='disable' 
     // Enable the button after 10 seconds
     let counter = 10;
     const intervalId= setInterval(countdown, 1000)

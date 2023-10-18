@@ -4,6 +4,7 @@ document.getElementById("submit").addEventListener("click", function (event) {
     if (checkValidation()) {
         //if user created successfully moving to the manu page
         if (createUser()){
+            // !  Remove
             // console.log(currUsername);
             window.location.href = "../html/gamemenu.html"
             return;
@@ -13,11 +14,10 @@ document.getElementById("submit").addEventListener("click", function (event) {
 
 //local storge users = [{username: '' , password: ''}, .....]
 
-//! Try to search if you can do check validation in html 
 function checkValidation() {
     //create var of the input
     const currUsername = document.getElementById("username").value;
-    let currPassword = document.getElementById("password").value;
+    let currPassword = document.getElementById("password").value; //! change to const
     const currAge = document.getElementById("age").value;
 
     //check validation of email

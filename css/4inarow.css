@@ -2,7 +2,7 @@ html, body {
     width:100vw;
     height: 100vh;
 }
-
+/* ! replace to vh vw */
 .white, .yellow, .red{
     margin: 5px;
     border-radius: 50%;

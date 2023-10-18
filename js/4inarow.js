@@ -7,6 +7,7 @@ function createGameBoard(rows, columns, level) {
         let column = [];
         for (let j = 0; j < rows; j++) {
             let newElement = document.createElement("div")
+            //! Try to add all classes at once :)
             newElement.classList.add("blank")
             newElement.classList.add("white")
             newElement.classList.add(i)
@@ -43,8 +44,10 @@ function turnConvertColor(arrCol, col) {
     }
 }
 
-
+//! Change the function name
 function chenFunc(col, row) {
+    // console.log("column:" + col);
+    // console.log("row:" + row);
     //saves the div that was colored now
     let coloredNow = board[col][row];
     //counts how many of the same color 
@@ -56,30 +59,33 @@ function chenFunc(col, row) {
     }
 
     //checks if there are 4 in the column
-    if (checkColumn(row,col,colorToCheck)){
+    if (checkColumn(row, col, colorToCheck)) {
         return;
     }
 
-    //checks if there are 4 in the row
     if (checkRow(row,col,colorToCheck)){
         return;
     }
+
 }
 
 //checks if there are 4 in the column
-function checkColumn(row,col,color){
+function checkColumn(row, col, color) {
     let counter = 0;
     for (let d = row; d < board[col].length; d++) {
         //add one if the div has a class of the same color
+        //! Do the else before - I will explain
         if (board[col][d].classList.contains(color)) {
             counter++
         }
         else {
             return false
         }
+        //! Why >= ? it need to === to the number that we check in this level
         if (counter >= 4) {
             board[col][d].classList.add(color)
-            document.getElementById("wining-message").textContent = `${color} won!`
+            console.log(board[col][d].classList);
+            console.log(`${color} won`)
             return true
         }
     }
@@ -87,27 +93,26 @@ function checkColumn(row,col,color){
 }
 
 //checks if there are 4 in the row
-function checkRow(row,col,color){
+function checkRow(row, col, color) {
     let counter = 0;
-    let checkFromHere = null;
-    for (let s = col; s < board.length; s++){
+    let indexRightCol = board.length - 1; //with the same color 
+    for (let s = col; s < board.length; s++) {
         //maybe add counting here so we wont need to repeat pointless
-        if (!board[s][row].classList.contains(color)){
-            checkFromHere = s-1;
+        if (!board[s][row].classList.contains(color)) {
+            indexRightCol = s - 1;
             break
-        } 
+        }
         else {
             counter++
         }
         if (counter >= 4) {
-            document.getElementById("wining-message").textContent = `${color} won!`
+            alert(`${color} won`)
             return true
         }
     }
     counter = 0;
-    for (let s = checkFromHere; s>=0; s--) {
-        //add one if the div has a class of the same color
-        // console.log('board[s][row]: ', board[s][row]);
+    for (let s = indexRightCol; s >= 0; s--) {
+        //add one if the div has a class of the same color 
         if (board[s][row].classList.contains(color)) {
             counter++
         }
@@ -115,9 +120,50 @@ function checkRow(row,col,color){
             return false
         }
         if (counter >= 4) {
-            document.getElementById("wining-message").textContent = `${color} won!`
+            alert(`${color} won`)
             return true
         }
     }
     return false
 }
+
+//I think its okay but we should check
+function checkSLant(row, col, color) {
+    let counter = 0;
+    let indexRightCol = board.length - 1;
+    let indexHigherRow = board[0].length - 1;
+    let j;
+    for (let i = col, j = row; i < board.length && j >= 0; i++, j--) {
+        console.log('first board[i][j]: ', board[i][j]);
+        if (!board[i][j].classList.contains(color)) {
+            indexRightCol = i - 1;
+            indexHigherRow = j + 1;
+            break;
+        }
+        else {
+            counter++
+        }
+        if (counter >= 4) {
+            console.log(`${color} won`)
+            return true
+        }
+    }
+    counter = 0;
+    for (let i = indexRightCol, j = indexHigherRow; i >=0 && j <board[0].length; i--, j++) {
+        console.log('second board[i][j]: ', board[i][j]);
+        if (board[i][j].classList.contains(color)) {
+            counter++
+        }
+        else {
+            return false
+        }
+        if (counter >= 4) {
+            console.log(`${color} won`)
+            return true;
+        }
+    }
+return false
+}
+
+
+
