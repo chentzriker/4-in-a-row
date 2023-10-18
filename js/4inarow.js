@@ -1,16 +1,16 @@
 let board = [];
 let inARow = null;
 //creating the board
-createGameBoard(6, 7, 4);
+const rows = 6;
+const cols = 7;
+const numInRow = 4;
+createGameBoard(rows, cols, numInRow);
 function createGameBoard(rows, columns, level) {
     for (let i = 0; i < columns; i++) {
         let column = [];
         for (let j = 0; j < rows; j++) {
             let newElement = document.createElement("div")
-            //! Try to add all classes at once :)
-            newElement.classList.add("blank")
-            newElement.classList.add("white")
-            newElement.classList.add(i)
+            newElement.classList.add("blank" , "white" , i)
             document.getElementById("container").appendChild(newElement)
             column.push(newElement)
             newElement.addEventListener("click", function () { turnConvertColor(column, i) })
@@ -38,20 +38,19 @@ function turnConvertColor(arrCol, col) {
             else {
                 arrCol[i].classList.add("red")
             }
-            checkIfWon(col, i) //col and row of the cell
+            isCurrPlayerWon(col, i) //row and col of the cell
             count++;
+
             break;
         }
     }
 }
 
-
-//! Change the function name
-function checkIfWon(col, row) {
+function isCurrPlayerWon(col, row) {
     //saves the div that was colored now
     let coloredNow = board[col][row];
     //counts how many of the same color 
-    let colorToCheck = null;
+    let colorToCheck;
     if (count % 2 === 0) {
         colorToCheck = "yellow"
     } else {
@@ -63,13 +62,35 @@ function checkIfWon(col, row) {
         winingMessage(`${colorToCheck} won`)
         return;
     }
-
-    if (checkRow(row,col,colorToCheck)){
+    if (checkRow(row, col, colorToCheck)) {
         winingMessage(`${colorToCheck} won`)
         return;
     }
-
+    if (check1SLant(row, col, colorToCheck)) {
+        return;
+    }
+    if (check2SLant(row, col, colorToCheck)) {
+        return;
+    }
 }
+
+//Resets the game in case of a tie or win
+function resetGame() {
+    for (let i = 0; i < cols; i++) {
+        for (let j = 0; j < rows; j++) {
+
+            if (board[i][j].classList.contains("yellow")) {
+                board[i][j].classList.remove("yellow");
+                board[i][j].classList.add("white")
+            }
+            else if (board[i][j].classList.contains("red")) {
+                board[i][j].classList.remove("red");
+                board[i][j].classList.add("white")
+            }
+        }
+    }
+}
+
 
 //checks if there are 4 in the column
 function checkColumn(row, col, color) {
@@ -83,8 +104,7 @@ function checkColumn(row, col, color) {
         else {
             return false
         }
-        //! Why >= ? it need to === to the number that we check in this level
-        if (counter >= 4) {
+        if (counter === 4) {
             board[col][d].classList.add(color)
             console.log(board[col][d].classList);
             console.log(`${color} won`)
@@ -107,7 +127,7 @@ function checkRow(row, col, color) {
         else {
             counter++
         }
-        if (counter >= 4) {
+        if (counter === 4) {
             alert(`${color} won`)
             return true
         }
@@ -121,7 +141,7 @@ function checkRow(row, col, color) {
         else {
             return false
         }
-        if (counter >= 4) {
+        if (counter === 4) {
             alert(`${color} won`)
             return true
         }
@@ -129,14 +149,14 @@ function checkRow(row, col, color) {
     return false
 }
 
-//I think its okay but we should check
-function checkSLant(row, col, color) {
+function check1SLant(row, col, color) { // slant: /
     let counter = 0;
-    let indexRightCol = board.length - 1;
-    let indexHigherRow = board[0].length - 1;
+    let indexRightCol = col;
+    let indexHigherRow = row;
     let j;
     for (let i = col, j = row; i < board.length && j >= 0; i++, j--) {
-        console.log('first board[i][j]: ', board[i][j]);
+        console.log('1first board[i][j]: ', board[i][j]);
+
         if (!board[i][j].classList.contains(color)) {
             indexRightCol = i - 1;
             indexHigherRow = j + 1;
@@ -145,26 +165,64 @@ function checkSLant(row, col, color) {
         else {
             counter++
         }
-        if (counter >= 4) {
+        if (counter === 4) {
             console.log(`${color} won`)
             return true
         }
     }
     counter = 0;
-    for (let i = indexRightCol, j = indexHigherRow; i >=0 && j <board[0].length; i--, j++) {
-        console.log('second board[i][j]: ', board[i][j]);
+    for (let i = indexRightCol, j = indexHigherRow; i >= 0 && j < board[0].length; i--, j++) {
+        console.log('1second board[i][j]: ', board[i][j]);
+
         if (board[i][j].classList.contains(color)) {
             counter++
         }
         else {
             return false
         }
-        if (counter >= 4) {
+        if (counter === 4) {
             console.log(`${color} won`)
             return true;
         }
     }
-return false
+    return false
+}
+
+function check2SLant(row, col, color) { // slant: \
+    let counter = 0;
+    let indexLeftCol = col;
+    let indexHigherRow = row;
+    let j;
+    for (let i = col, j = row; i >= 0 && j >= 0; i--, j--) {
+        console.log('2first board[i][j]: ', board[i][j]);
+        if (!board[i][j].classList.contains(color)) {
+            indexLeftCol = i + 1;
+            indexHigherRow = j + 1;
+            break;
+        }
+        else {
+            counter++
+        }
+        if (counter === 4) {
+            console.log(`${color} won`)
+            return true
+        }
+    }
+    counter = 0;
+    for (let i = indexLeftCol, j = indexHigherRow; i < board.length && j < board[0].length; i++, j++) {
+        console.log('2second board[i][j]: ', board[i][j]);
+        if (board[i][j].classList.contains(color)) {
+            counter++
+        }
+        else {
+            return false
+        }
+        if (counter === 4) {
+            console.log(`${color} won`)
+            return true;
+        }
+    }
+    return false
 }
 
 function winingMessage(message){
