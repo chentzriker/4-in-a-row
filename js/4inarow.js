@@ -49,6 +49,12 @@ function turnConvertColor(arrCol, col) {
             }
             isCurrPlayerWon(col, i) //row and col of the cell
             count++;
+             if (count % 2 === 0) {
+                 document.getElementById("turn").textContent = "yellow's turn"
+            }
+            else {
+                document.getElementById("turn").textContent = "red's turn"
+            }
             break;
         }
     }

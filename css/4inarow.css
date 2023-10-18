@@ -53,11 +53,10 @@ main{
 
 #container {
     margin-top: 5vh;
-    margin-bottom: 10vh;
     display: block;
     margin-left: auto;
     margin-right: auto;
-    background-color: darkblue;
+    background-color: blue;
     height: 80vh;
     width: 50vw;
     display: grid;
@@ -96,7 +95,14 @@ main{
 }
 
 #game-name{
-    margin-right: 2vw;
-    text-align: right;
-    color:darkblue;
+    text-align: center;
+    color:blue;
+}
+
+#turn{
+    background-color:darkblue ;
+    width: 10vw;
+    height: 10vh;
+    color:white;
+    text-align: center;
 }
