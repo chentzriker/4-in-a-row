@@ -11,14 +11,16 @@
 
 @keyframes expandGameImg {
   0% {
-    width: 30vw;
+    width: 20vw;
   }
 
   100% {
-    width: 32vw;
+    width: 22vw;
   }
 }
-
+figcaption{
+  font-size: 2rem;
+}
 #games-container {
   display: flex;
   flex-direction: row;
@@ -26,7 +28,7 @@
 }
 
 .game-img {
-  width: 30vw;
+  width: 20vw;
   margin-top: 10vh;
   
 }
