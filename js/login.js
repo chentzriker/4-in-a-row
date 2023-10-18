@@ -19,7 +19,7 @@ function checkUserExistence() {
             }
             logedinUsers.push(name)
             const logingInFinall = JSON.stringify(logedinUsers)
-            localStorage.setItem("logedIn", loginginfinall)
+            localStorage.setItem("logedIn", logingInFinall)
             window.location.href = "../html/gamemenu.html"
             return;
         }
