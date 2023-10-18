@@ -1,0 +1,72 @@
+@font-face {
+  font-family: Belarost;
+  src: url(../fonts/Belarost.ttf);
+}
+
+@font-face {
+  font-family: Dreams;
+  src: url(../fonts/CaviarDreams.ttf)
+}
+
+
+.form {
+  font-family: Dreams;
+  text-align: center;
+  color: #b0776c;
+  font-size: 1.5rem;
+  width: 28vw;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5vh;
+}
+
+#submit {
+  margin-top: 1vh;
+  font-family: Dreams;
+  font-weight: 500;
+  font-size: 16px;
+  padding: 0.7em 1.4em 0.7em 1.1em;
+  color: white;
+  background: linear-gradient(0deg, #b87e72 0%, #916157 100%);
+  border: none;
+  box-shadow: 0 0.7em 1.5em -0.5em #0f110f98;
+  letter-spacing: 0.05em;
+  border-radius: 20em;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+#submit:hover {
+  box-shadow: 0 0.5em 1.5em -0.5em #050505;
+}
+
+#submit:active {
+  box-shadow: 0 0.3em 1em -0.5em #10111098;
+}
+
+.tooltip {
+  position: relative;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 25vw;
+  background-color: #edf9fe;
+  color: #000000;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  font-size: 1rem;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+  top: -5px;
+  left: 105%;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
