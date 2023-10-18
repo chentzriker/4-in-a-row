@@ -48,8 +48,14 @@ function turnConvertColor(arrCol, col) {
                 arrCol[i].classList.add("red")
             }
             isCurrPlayerWon(col, i) //row and col of the cell
-            console.log(count)
+            console.log(count)         
             count++;
+             if (count % 2 === 0) {
+                 document.getElementById("turn").textContent = "yellow's turn"
+            }
+            else {
+                document.getElementById("turn").textContent = "red's turn"
+            }
             break;
         }
     }

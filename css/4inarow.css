@@ -2,7 +2,6 @@ html,
 body {
     width: 100vw;
     height: 100vh;
-    overflow-x: hidden;
 }
 
 p {
@@ -98,4 +97,12 @@ main{
 #game-name{
     text-align: center;
     color:blue;
+}
+
+#turn{
+    background-color:darkblue ;
+    width: 10vw;
+    height: 10vh;
+    color:white;
+    text-align: center;
 }
