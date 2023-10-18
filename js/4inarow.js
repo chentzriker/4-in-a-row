@@ -24,9 +24,6 @@ function createGameBoard(rows, columns, level) {
     }
 }
 
-//seppuse to clear the board so we could build a new one
-function clearBoard() { }
-
 let count = 1;
 function turnConvertColor(arrCol, col) {
     for (let i = arrCol.length - 1; i >= 0; i--) {
@@ -81,6 +78,9 @@ function isCurrPlayerWon(col, row) {
 
 //Resets the game in case of a tie or win
 function resetGame() {
+    if (document.getElementById("message-box")){
+        document.getElementById("message-box").remove();
+    }
     for (let i = 0; i < cols; i++) {
         for (let j = 0; j < rows; j++) {
 
@@ -232,15 +232,15 @@ function winingMessage(message) {
     let playAgain = document.createElement("p");
     playAgain.textContent = "play again";
     messageBox.appendChild(playAgain)
-    playAgain.addEventListener("click", clearBoard)
+    playAgain.addEventListener("click", resetGame)
 }
 
 //after the popup shows, the function prevent the players to color more circles
 function stopGame() {
     for (let i = 0; i < cols; i++) {
         for (let j = 0; j < rows; j++) {
-            (board[i][j]).removeEventLisener("click", function () { turnConvertColor(column, i) })
-        }
+        //     (board[i][j]).removeEventListener("click", )
+         }
     }
     return
 }
