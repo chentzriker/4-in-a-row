@@ -48,7 +48,6 @@ function turnConvertColor(arrCol, col) {
                 arrCol[i].classList.add("red")
             }
             isCurrPlayerWon(col, i) //row and col of the cell
-            console.log(count)
             count++;
             break;
         }
@@ -78,11 +77,16 @@ function isCurrPlayerWon(col, row) {
         winingMessage(`${colorToCheck} won!`)
         return;
     }
-    if (check2SLant(row, col, colorToCheck)) {
-        
+    if (check2SLant(row, col, colorToCheck)) { 
         winingMessage(`${colorToCheck} won!`)
         return;
     }
+    // doesnt work
+    // if (count===rows*cols) { 
+    //     winingMessage("no one won :(")
+    //     return;
+    // }
+
 }
 
 //Resets the game in case of a tie or win
@@ -115,7 +119,6 @@ function emptyBoard() {
     }
     count = 0
     return
-    count=0;
 
 }
 
