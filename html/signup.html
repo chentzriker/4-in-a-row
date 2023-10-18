@@ -15,12 +15,15 @@
 </header>
 <body>
     <form >
-        <fieldset>
-          <legend><h1>sign up</h1></legend>
+        <fieldset class="form">
+          <legend><h1 id="form-head">sign up</h1></legend>
           <label for="username">Username-email</label><br>
           <input type="email" id="username" name="username" autocomplete="username"><br><br>
+          <div class="tooltip">
           <label for="password">Password</label><br>
           <input type="password" id="password" name="password" autocomplete="new-password"><br><br>
+            <p  class="tooltiptext">Password should contain: <br> 1. at least one uppercase letter <br> 2.at least one lowercase letter<br> 3.at least one digit <br> 4.should be more than 4 character</p>
+          </div>
           <label for="confirm">Confirm password</label><br>
           <input type="password" id="confirm" name="confirm-password" autocomplete="confirm-password"><br><br>
           <label for="age">Age</label><br>
