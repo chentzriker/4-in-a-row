@@ -19,7 +19,6 @@ main{
     display: flex;
 }
 
-/* ! replace to vh vw */
 .white,
 .yellow,
 .red {
@@ -55,7 +54,6 @@ main{
 
 #container {
     margin-top: 5vh;
-    /* margin-bottom: 5vh; */
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -95,4 +93,9 @@ main{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+#game-name{
+    text-align: center;
+    color:blue;
 }

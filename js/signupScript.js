@@ -15,10 +15,14 @@ document.getElementById("submit").addEventListener("click", function (event) {
 function checkValidation() {
     //create var of the input
     const currUsername = document.getElementById("username").value;
-    let currPassword = document.getElementById("password").value; //! change to const
+    const currPassword = document.getElementById("password").value; //! change to const
     const currAge = document.getElementById("age").value;
 
     //check validation of email
+    if (!currAge||!currPassword||!currUsername){
+       alert ("You must fill all fields") 
+    }
+
     let usernameRegex = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
     if (usernameRegex.exec(currUsername) === null) {
         alert("The email address is incorrect")

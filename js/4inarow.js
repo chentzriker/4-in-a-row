@@ -33,6 +33,7 @@ function createGameBoard(rowsNum, columnsNum, level) {
         container.style.gridTemplateColumns = `repeat(${cols},auto)`
         container.style.gridTemplateRows = `repeat(${rows},auto)`
         numInRow = level;
+        document.getElementById("game-name").textContent = `${level} in a row`
     }
 }
 
