@@ -1,16 +1,16 @@
 let board = [];
 let inARow = null;
 //creating the board
-createGameBoard(6, 7, 4);
+const rows = 6;
+const cols = 7;
+const numInRow = 4;
+createGameBoard(rows, cols, numInRow);
 function createGameBoard(rows, columns, level) {
     for (let i = 0; i < columns; i++) {
         let column = [];
         for (let j = 0; j < rows; j++) {
             let newElement = document.createElement("div")
-            //! Try to add all classes at once :)
-            newElement.classList.add("blank")
-            newElement.classList.add("white")
-            newElement.classList.add(i)
+            newElement.classList.add("blank" , "white" , i)
             document.getElementById("container").appendChild(newElement)
             column.push(newElement)
             newElement.addEventListener("click", function () { turnConvertColor(column, i) })
@@ -25,7 +25,7 @@ function createGameBoard(rows, columns, level) {
 }
 
 
-function clearBoard()
+
 let count = 1;
 function turnConvertColor(arrCol, col) {
     for (let i = arrCol.length - 1; i >= 0; i--) {
@@ -37,21 +37,19 @@ function turnConvertColor(arrCol, col) {
             else {
                 arrCol[i].classList.add("red")
             }
-            chenFunc(col, i) //row and col of the cell
+            isCurrPlayerWon(col, i) //row and col of the cell
             count++;
+
             break;
         }
     }
 }
 
-//! Change the function name
-function chenFunc(col, row) {
-    // console.log("column:" + col);
-    // console.log("row:" + row);
+function isCurrPlayerWon(col, row) {
     //saves the div that was colored now
     let coloredNow = board[col][row];
     //counts how many of the same color 
-    let colorToCheck = null;
+    let colorToCheck;
     if (count % 2 === 0) {
         colorToCheck = "yellow"
     } else {
@@ -62,7 +60,6 @@ function chenFunc(col, row) {
     if (checkColumn(row, col, colorToCheck)) {
         return;
     }
-
     if (checkRow(row, col, colorToCheck)) {
         return;
     }
@@ -72,8 +69,25 @@ function chenFunc(col, row) {
     if (check2SLant(row, col, colorToCheck)) {
         return;
     }
-
 }
+
+//Resets the game in case of a tie or win
+function resetGame() {
+    for (let i = 0; i < cols; i++) {
+        for (let j = 0; j < rows; j++) {
+
+            if (board[i][j].classList.contains("yellow")) {
+                board[i][j].classList.remove("yellow");
+                board[i][j].classList.add("white")
+            }
+            else if (board[i][j].classList.contains("red")) {
+                board[i][j].classList.remove("red");
+                board[i][j].classList.add("white")
+            }
+        }
+    }
+}
+
 
 //checks if there are 4 in the column
 function checkColumn(row, col, color) {
@@ -87,8 +101,7 @@ function checkColumn(row, col, color) {
         else {
             return false
         }
-        //! Why >= ? it need to === to the number that we check in this level
-        if (counter >= 4) {
+        if (counter === 4) {
             board[col][d].classList.add(color)
             console.log(board[col][d].classList);
             console.log(`${color} won`)
@@ -111,7 +124,7 @@ function checkRow(row, col, color) {
         else {
             counter++
         }
-        if (counter >= 4) {
+        if (counter === 4) {
             alert(`${color} won`)
             return true
         }
@@ -125,7 +138,7 @@ function checkRow(row, col, color) {
         else {
             return false
         }
-        if (counter >= 4) {
+        if (counter === 4) {
             alert(`${color} won`)
             return true
         }
@@ -149,7 +162,7 @@ function check1SLant(row, col, color) { // slant: /
         else {
             counter++
         }
-        if (counter >= 4) {
+        if (counter === 4) {
             console.log(`${color} won`)
             return true
         }
@@ -164,7 +177,7 @@ function check1SLant(row, col, color) { // slant: /
         else {
             return false
         }
-        if (counter >= 4) {
+        if (counter === 4) {
             console.log(`${color} won`)
             return true;
         }
@@ -187,7 +200,7 @@ function check2SLant(row, col, color) { // slant: \
         else {
             counter++
         }
-        if (counter >= 4) {
+        if (counter === 4) {
             console.log(`${color} won`)
             return true
         }
@@ -201,7 +214,7 @@ function check2SLant(row, col, color) { // slant: \
         else {
             return false
         }
-        if (counter >= 4) {
+        if (counter === 4) {
             console.log(`${color} won`)
             return true;
         }
