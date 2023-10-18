@@ -1,7 +1,7 @@
 document.getElementById("submit").addEventListener("click", checkUserExistence);
-//! Remove
 let userEntered = null;
 let failedLogin = 0
+//check if the user is signed
 function checkUserExistence() {
     const name = document.getElementById("Username").value;
     const password = document.getElementById("Password").value;
@@ -16,8 +16,8 @@ function checkUserExistence() {
                 logedinUsers = []
             }
             logedinUsers.push(name)
-            const loginginfinall = JSON.stringify(logedinUsers)
-            localStorage.setItem("logedIn", loginginfinall)
+            const logingInFinall = JSON.stringify(logedinUsers)
+            localStorage.setItem("logedIn", logingInFinall)
             window.location.href = "../html/gamemenu.html"
             return;
         }

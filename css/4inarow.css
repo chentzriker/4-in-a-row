@@ -42,7 +42,27 @@ html, body {
     display: grid;
     grid-auto-flow: column;
 }
-#wining-message{
-    color:blue;
+#message-box{
+    background-color:hsl(203, 92%, 75%);
+    color:white;
     text-align: center;
+    width:40vw;
+    height: 20vh;
+    z-index: 10;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+
+p{
+    border: 3px outset hsl(203, 92%, 62%);
+    display: inline;
+    padding: 5px;
+}
+
+p:active{
+    border: 3px inset hsl(203, 92%, 62%);
 }
