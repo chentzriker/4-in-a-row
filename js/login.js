@@ -25,8 +25,6 @@ function checkUserExistence() {
     }
     alert("one field or more is wrong")
     failedLogin++
-    //! Remove
-    console.log('failedLogin: ', failedLogin);
 
     if (failedLogin === 3) {
         //! Why do you need to sent the element? why wont get it inside the function

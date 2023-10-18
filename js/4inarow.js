@@ -1,5 +1,7 @@
 let board = [];
 let inARow = null;
+//creating the board
+createGameBoard(6, 7, 4);
 function createGameBoard(rows, columns, level) {
     for (let i = 0; i < columns; i++) {
         let column = [];
@@ -21,7 +23,9 @@ function createGameBoard(rows, columns, level) {
 
     }
 }
-createGameBoard(6, 7, 4);
+
+
+function clearBoard()
 let count = 1;
 function turnConvertColor(arrCol, col) {
     for (let i = arrCol.length - 1; i >= 0; i--) {
@@ -29,7 +33,6 @@ function turnConvertColor(arrCol, col) {
             arrCol[i].classList.remove("white");
             if (count % 2 === 0) {
                 arrCol[i].classList.add("yellow")
-                console.log('hi') // ! remove
             }
             else {
                 arrCol[i].classList.add("red")
@@ -43,7 +46,6 @@ function turnConvertColor(arrCol, col) {
 
 //! Change the function name
 function chenFunc(col, row) {
-    //! remove logs and variables you don't use
     // console.log("column:" + col);
     // console.log("row:" + row);
     //saves the div that was colored now
@@ -55,6 +57,7 @@ function chenFunc(col, row) {
     } else {
         colorToCheck = "red"
     }
+
     //checks if there are 4 in the column
     if (checkColumn(row, col, colorToCheck)) {
         return;
@@ -87,7 +90,6 @@ function checkColumn(row, col, color) {
         //! Why >= ? it need to === to the number that we check in this level
         if (counter >= 4) {
             board[col][d].classList.add(color)
-            //! remove
             console.log(board[col][d].classList);
             console.log(`${color} won`)
             return true
@@ -110,7 +112,7 @@ function checkRow(row, col, color) {
             counter++
         }
         if (counter >= 4) {
-            console.log(`${color} won`)
+            alert(`${color} won`)
             return true
         }
     }
@@ -124,7 +126,7 @@ function checkRow(row, col, color) {
             return false
         }
         if (counter >= 4) {
-            console.log(`${color} won`)
+            alert(`${color} won`)
             return true
         }
     }
