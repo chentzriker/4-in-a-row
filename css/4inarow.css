@@ -28,3 +28,7 @@ html, body {
     display: grid;
     grid-auto-flow: column;
 }
+#wining-message{
+    color:blue;
+    text-align: center;
+}

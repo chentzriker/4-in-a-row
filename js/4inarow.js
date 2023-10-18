@@ -1,5 +1,7 @@
 let board = [];
 let inARow = null;
+//creating the board
+createGameBoard(6, 7, 4);
 function createGameBoard(rows, columns, level) {
     for (let i = 0; i < columns; i++) {
         let column = [];
@@ -20,7 +22,9 @@ function createGameBoard(rows, columns, level) {
 
     }
 }
-createGameBoard(6, 7, 4);
+
+
+function clearBoard()
 let count = 1;
 function turnConvertColor(arrCol, col) {
     for (let i = arrCol.length - 1; i >= 0; i--) {
@@ -28,7 +32,6 @@ function turnConvertColor(arrCol, col) {
             arrCol[i].classList.remove("white");
             if (count % 2 === 0) {
                 arrCol[i].classList.add("yellow")
-                console.log('hi')
             }
             else {
                 arrCol[i].classList.add("red")
@@ -42,8 +45,6 @@ function turnConvertColor(arrCol, col) {
 
 
 function chenFunc(col, row) {
-    // console.log("column:" + col);
-    // console.log("row:" + row);
     //saves the div that was colored now
     let coloredNow = board[col][row];
     //counts how many of the same color 
@@ -53,11 +54,13 @@ function chenFunc(col, row) {
     } else {
         colorToCheck = "red"
     }
+
     //checks if there are 4 in the column
     if (checkColumn(row,col,colorToCheck)){
         return;
     }
 
+    //checks if there are 4 in the row
     if (checkRow(row,col,colorToCheck)){
         return;
     }
@@ -76,8 +79,7 @@ function checkColumn(row,col,color){
         }
         if (counter >= 4) {
             board[col][d].classList.add(color)
-            console.log(board[col][d].classList);
-            console.log(`${color} won`)
+            document.getElementById("wining-message").textContent = `${color} won!`
             return true
         }
     }
@@ -98,7 +100,7 @@ function checkRow(row,col,color){
             counter++
         }
         if (counter >= 4) {
-            alert(`${color} won`)
+            document.getElementById("wining-message").textContent = `${color} won!`
             return true
         }
     }
@@ -113,7 +115,7 @@ function checkRow(row,col,color){
             return false
         }
         if (counter >= 4) {
-            alert(`${color} won`)
+            document.getElementById("wining-message").textContent = `${color} won!`
             return true
         }
     }

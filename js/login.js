@@ -22,7 +22,6 @@ function checkUserExistence() {
     }
     alert("one field or more is wrong")
     failedLogin++
-    console.log('failedLogin: ', failedLogin);
 
     if (failedLogin === 3) {
         disableButtonTemporarily(document.getElementById("submit"));
