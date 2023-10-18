@@ -63,7 +63,10 @@ function chenFunc(col, row) {
     if (checkRow(row, col, colorToCheck)) {
         return;
     }
-    if (checkSLant(row, col, colorToCheck)) {
+    if (check1SLant(row, col, colorToCheck)) {
+        return;
+    }
+    if (check2SLant(row, col, colorToCheck)) {
         return;
     }
 
@@ -128,14 +131,14 @@ function checkRow(row, col, color) {
     return false
 }
 
-//I think its okay but we should check
-function checkSLant(row, col, color) {
+function check1SLant(row, col, color) { // slant: /
     let counter = 0;
-    let indexRightCol = board.length - 1;
-    let indexHigherRow = board[0].length - 1;
+    let indexRightCol = col;
+    let indexHigherRow = row;
     let j;
     for (let i = col, j = row; i < board.length && j >= 0; i++, j--) {
-        console.log('first board[i][j]: ', board[i][j]);
+        console.log('1first board[i][j]: ', board[i][j]);
+
         if (!board[i][j].classList.contains(color)) {
             indexRightCol = i - 1;
             indexHigherRow = j + 1;
@@ -150,8 +153,9 @@ function checkSLant(row, col, color) {
         }
     }
     counter = 0;
-    for (let i = indexRightCol, j = indexHigherRow; i >=0 && j <board[0].length; i--, j++) {
-        console.log('second board[i][j]: ', board[i][j]);
+    for (let i = indexRightCol, j = indexHigherRow; i >= 0 && j < board[0].length; i--, j++) {
+        console.log('1second board[i][j]: ', board[i][j]);
+
         if (board[i][j].classList.contains(color)) {
             counter++
         }
@@ -163,7 +167,44 @@ function checkSLant(row, col, color) {
             return true;
         }
     }
-return false
+    return false
+}
+
+function check2SLant(row, col, color) { // slant: \
+    let counter = 0;
+    let indexLeftCol = col;
+    let indexHigherRow = row;
+    let j;
+    for (let i = col, j = row; i >= 0 && j >= 0; i--, j--) {
+        console.log('2first board[i][j]: ', board[i][j]);
+        if (!board[i][j].classList.contains(color)) {
+            indexLeftCol = i + 1;
+            indexHigherRow = j + 1;
+            break;
+        }
+        else {
+            counter++
+        }
+        if (counter >= 4) {
+            console.log(`${color} won`)
+            return true
+        }
+    }
+    counter = 0;
+    for (let i = indexLeftCol, j = indexHigherRow; i < board.length && j < board[0].length; i++, j++) {
+        console.log('2second board[i][j]: ', board[i][j]);
+        if (board[i][j].classList.contains(color)) {
+            counter++
+        }
+        else {
+            return false
+        }
+        if (counter >= 4) {
+            console.log(`${color} won`)
+            return true;
+        }
+    }
+    return false
 }
 
 
