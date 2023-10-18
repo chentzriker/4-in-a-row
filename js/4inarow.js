@@ -4,6 +4,8 @@ let inARow;
 let rows;
 let cols;
 let numInRow;
+let count = 1;
+
 const level3 = document.getElementById("3");
 const level4 = document.getElementById("4");
 const level5 = document.getElementById("5");
@@ -13,7 +15,6 @@ level5.addEventListener("click", function () { createGameBoard(7, 8, 5) })
 createGameBoard(6, 7, 4)
 function createGameBoard(rowsNum, columnsNum, level) {
     emptyBoard()
-    console.log("hi");
     rows = rowsNum;
     cols = columnsNum;
     numInRow = level;
@@ -31,11 +32,9 @@ function createGameBoard(rowsNum, columnsNum, level) {
         container.style.gridTemplateColumns = `repeat(${cols},auto)`
         container.style.gridTemplateRows = `repeat(${rows},auto)`
         numInRow = level;
-
     }
 }
 
-let count = 1;
 function turnConvertColor(arrCol, col) {
     for (let i = arrCol.length - 1; i >= 0; i--) {
         if (arrCol[i].classList.contains("white")) {
@@ -66,6 +65,7 @@ function isCurrPlayerWon(col, row) {
     }
     //checks if there are 4 in the column
     if (checkColumn(row, col, colorToCheck)) {
+        console.log("winning");
         winingMessage(`${colorToCheck} won!`)
         return;
     }
@@ -78,6 +78,7 @@ function isCurrPlayerWon(col, row) {
         return;
     }
     if (check2SLant(row, col, colorToCheck)) {
+        
         winingMessage(`${colorToCheck} won!`)
         return;
     }
@@ -101,6 +102,7 @@ function resetGame() {
             }
         }
     }
+    count=0;
 }
 
 //remove all white divs from board
@@ -111,6 +113,7 @@ function emptyBoard() {
         }
     }
     return
+    count=0;
 
 }
 
@@ -120,14 +123,13 @@ function checkColumn(row, col, color) {
     let counter = 0;
     for (let d = row; d < board[col].length; d++) {
         //add one if the div has a class of the same color
-        //! Do the else before - I will explain
         if (!board[col][d].classList.contains(color)) {
             return false
         }
         else {
             counter++
         }
-        if (counter === 4) {
+        if (counter === numInRow) {
             board[col][d].classList.add(color)
             return true
         }
@@ -148,20 +150,20 @@ function checkRow(row, col, color) {
         else {
             counter++
         }
-        if (counter === 4) {
+        if (counter === numInRow) {
             return true
         }
     }
     counter = 0;
     for (let s = indexRightCol; s >= 0; s--) {
         //add one if the div has a class of the same color 
-        if (board[s][row].classList.contains(color)) {
-            counter++
-        }
-        else {
+        if (!board[s][row].classList.contains(color)) {
             return false
         }
-        if (counter === 4) {
+        else {
+            counter++
+        }
+        if (counter === numInRow) {
             return true
         }
     }
@@ -184,7 +186,7 @@ function check1SLant(row, col, color) { // slant: /
         else {
             counter++
         }
-        if (counter === 4) {
+        if (counter === numInRow) {
             return true
         }
     }
@@ -197,7 +199,7 @@ function check1SLant(row, col, color) { // slant: /
         else {
             return false
         }
-        if (counter === 4) {
+        if (counter === numInRow) {
             return true;
         }
     }
@@ -219,7 +221,7 @@ function check2SLant(row, col, color) { // slant: \
         else {
             counter++
         }
-        if (counter === 4) {
+        if (counter === numInRow) {
             return true
         }
     }
@@ -232,7 +234,7 @@ function check2SLant(row, col, color) { // slant: \
         else {
             return false
         }
-        if (counter === 4) {
+        if (counter === numInRow) {
             return true;
         }
     }
