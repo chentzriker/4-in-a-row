@@ -1,6 +1,4 @@
 document.getElementById("submit").addEventListener("click", checkUserExistence);
-//! Remove
-// localStorage.setItem("logedin","[]")
 let userEntered = null;
 let failedLogin = 0
 //check if the user is signed
@@ -19,7 +17,7 @@ function checkUserExistence() {
             }
             logedinUsers.push(name)
             const logingInFinall = JSON.stringify(logedinUsers)
-            localStorage.setItem("logedIn", loginginfinall)
+            localStorage.setItem("logedIn", logingInFinall)
             window.location.href = "../html/gamemenu.html"
             return;
         }

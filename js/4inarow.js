@@ -1,5 +1,5 @@
 let board = [];
-let inARow = null;
+let inARow;
 //creating the board
 const rows = 6;
 const cols = 7;
@@ -10,7 +10,7 @@ function createGameBoard(rows, columns, level) {
         let column = [];
         for (let j = 0; j < rows; j++) {
             let newElement = document.createElement("div")
-            newElement.classList.add("blank" , "white" , i)
+            newElement.classList.add("blank", "white", i)
             document.getElementById("container").appendChild(newElement)
             column.push(newElement)
             newElement.addEventListener("click", function () { turnConvertColor(column, i) })
@@ -25,7 +25,7 @@ function createGameBoard(rows, columns, level) {
 }
 
 //seppuse to clear the board so we could build a new one
-function clearBoard(){}
+function clearBoard() { }
 
 let count = 1;
 function turnConvertColor(arrCol, col) {
@@ -56,20 +56,25 @@ function isCurrPlayerWon(col, row) {
     } else {
         colorToCheck = "red"
     }
-
     //checks if there are 4 in the column
     if (checkColumn(row, col, colorToCheck)) {
+        stopGame()
         winingMessage(`${colorToCheck} won`)
         return;
     }
     if (checkRow(row, col, colorToCheck)) {
+        // stopGame()
         winingMessage(`${colorToCheck} won`)
         return;
     }
     if (check1SLant(row, col, colorToCheck)) {
+        // stopGame()
+        winingMessage(`${colorToCheck} won`)
         return;
     }
     if (check2SLant(row, col, colorToCheck)) {
+        // stopGame()
+        winingMessage(`${colorToCheck} won`)
         return;
     }
 }
@@ -106,8 +111,6 @@ function checkColumn(row, col, color) {
         }
         if (counter === 4) {
             board[col][d].classList.add(color)
-            console.log(board[col][d].classList);
-            console.log(`${color} won`)
             return true
         }
     }
@@ -128,7 +131,6 @@ function checkRow(row, col, color) {
             counter++
         }
         if (counter === 4) {
-            alert(`${color} won`)
             return true
         }
     }
@@ -142,7 +144,6 @@ function checkRow(row, col, color) {
             return false
         }
         if (counter === 4) {
-            alert(`${color} won`)
             return true
         }
     }
@@ -166,13 +167,11 @@ function check1SLant(row, col, color) { // slant: /
             counter++
         }
         if (counter === 4) {
-            console.log(`${color} won`)
             return true
         }
     }
     counter = 0;
     for (let i = indexRightCol, j = indexHigherRow; i >= 0 && j < board[0].length; i--, j++) {
-        console.log('1second board[i][j]: ', board[i][j]);
 
         if (board[i][j].classList.contains(color)) {
             counter++
@@ -181,7 +180,6 @@ function check1SLant(row, col, color) { // slant: /
             return false
         }
         if (counter === 4) {
-            console.log(`${color} won`)
             return true;
         }
     }
@@ -204,7 +202,6 @@ function check2SLant(row, col, color) { // slant: \
             counter++
         }
         if (counter === 4) {
-            console.log(`${color} won`)
             return true
         }
     }
@@ -218,24 +215,32 @@ function check2SLant(row, col, color) { // slant: \
             return false
         }
         if (counter === 4) {
-            console.log(`${color} won`)
             return true;
         }
     }
     return false
 }
 
-function winingMessage(message){
+function winingMessage(message) {
     console.log("entered")
-   let messageBox = document.createElement("div");
-   messageBox.setAttribute("id","message-box")
-   document.body.appendChild(messageBox)
-   let winingMessage = document.createElement("h2");
-   messageBox.appendChild(winingMessage)
-   winingMessage.textContent = message;
-   let playAgain = document.createElement("p");
-   playAgain.textContent = "play again";
-   messageBox.appendChild(playAgain)
-   playAgain.addEventListener("click",clearBoard)
+    let messageBox = document.createElement("div");
+    messageBox.setAttribute("id", "message-box")
+    document.body.appendChild(messageBox)
+    let winingMessage = document.createElement("h2");
+    messageBox.appendChild(winingMessage)
+    winingMessage.textContent = message;
+    let playAgain = document.createElement("p");
+    playAgain.textContent = "play again";
+    messageBox.appendChild(playAgain)
+    playAgain.addEventListener("click", clearBoard)
 }
 
+//after the popup shows, the function prevent the players to color more circles
+function stopGame() {
+    for (let i = 0; i < cols; i++) {
+        for (let j = 0; j < rows; j++) {
+            (board[i][j]).removeEventLisener("click", function () { turnConvertColor(column, i) })
+        }
+    }
+    return
+}

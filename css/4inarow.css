@@ -41,9 +41,7 @@ html, body {
     transform: translate(-50%, -50%);
 }
 
-h2{
-    font-size: larger;
-}
+
 
 p{
     border: 3px outset hsl(203, 92%, 62%);
