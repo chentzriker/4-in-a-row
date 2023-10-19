@@ -199,7 +199,6 @@ function check1SLant(row, col, color) { // slant: /
     let counter = 0;
     let indexRightCol = col;
     let indexHigherRow = row;
-    let j;
     for (let i = col, j = row; i < board.length && j >= 0; i++, j--) {
         if (!board[i][j].classList.contains(color)) {
             indexRightCol = i - 1;
@@ -229,11 +228,10 @@ function check1SLant(row, col, color) { // slant: /
     return false
 }
 
-function check2SLant(row, col, color) { // slant: \
+function check2SLant(row, col, color) {
     let counter = 0;
     let indexLeftCol = col;
     let indexHigherRow = row;
-    let j;
     for (let i = col, j = row; i >= 0 && j >= 0; i--, j--) {
         if (!board[i][j].classList.contains(color)) {
             indexLeftCol = i + 1;
@@ -263,16 +261,17 @@ function check2SLant(row, col, color) { // slant: \
 }
 
 function winingMessage(message, colorTurnRgb) {
-    let blur = document.createElement("div");
+    const blur = document.createElement("div");
     blur.setAttribute("id", "blur-screen")
     document.body.appendChild(blur)
-    let messageBox = document.createElement("div");
+    const messageBox = document.createElement("div");
     messageBox.setAttribute("id", "message-box")
     document.body.appendChild(messageBox)
-    let winingMessage = document.createElement("h2");
+    const winingMessage = document.createElement("h2");
     messageBox.appendChild(winingMessage)
     winingMessage.textContent = message;
-    let playAgain = document.createElement("p");
+    const playAgain = document.createElement("button");
+    playAgain.setAttribute("class", "game-button")
     playAgain.textContent = "play again";
     messageBox.appendChild(playAgain)
     playAgain.addEventListener("click", resetGame)

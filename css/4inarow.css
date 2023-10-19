@@ -5,15 +5,32 @@ body {
     overflow-x: hidden;
 }
 
-p {
-    border: 3px outset hsl(203, 92%, 62%);
-    display: inline;
-    padding: 5px;
+/* .play-again-btn {
+
 }
 
-p:active {
+.play-again-btn:active {
     border: 3px inset hsl(203, 92%, 62%);
+} */
+
+.game-button {
+    background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+    background-color: transparent;
+    border: 3px outset white;
+    display: inline;
+    padding: 5px;
+
 }
+
+.game-button:active {
+    border: 3px inset white;
+} 
 
 main  {
     display: flex;
