@@ -10,12 +10,10 @@ document.getElementById("submit").addEventListener("click", function (event) {
     }
 });
 
-//local storge users = [{username: '' , password: ''}, .....]
-
 function checkValidation() {
     //create var of the input
     const currUsername = document.getElementById("username").value;
-    const currPassword = document.getElementById("password").value; //! change to const
+    const currPassword = document.getElementById("password").value;
     const currAge = document.getElementById("age").value;
 
     //check validation of email

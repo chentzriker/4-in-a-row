@@ -1,6 +1,5 @@
 let board = [];
 let inARow;
-//creating the board
 let rows;
 let cols;
 let numInRow;
@@ -11,18 +10,15 @@ const level5 = document.getElementById("5");
 level3.addEventListener("click", function () { createGameBoard(5, 6, 3) })
 level4.addEventListener("click", function () { createGameBoard(6, 7, 4) })
 level5.addEventListener("click", function () { createGameBoard(7, 8, 5) })
-
-
 let color1;
 let color2;
 document.getElementById("start-game").addEventListener("click", setPlayersColor)
 function setPlayersColor() {
     color1 = document.getElementById("color1").value;
-    console.log('color1: ', color1);
     color2 = document.getElementById("color2").value;
-    console.log('color2: ', color2);
 }
 
+//creating the board
 createGameBoard(6, 7, 4)
 function createGameBoard(rowsNum, columnsNum, level) {
     document.getElementById("turn").textContent = "";
@@ -87,7 +83,7 @@ function isCurrPlayerWon(col, row) {
 
     let playerTurn = colorToCheck === "color1" ? "player1" : "player2"
     let colorTurnRgb = colorToCheck === "color1" ? color1 : color2
-    //checks if there are 4 in the column
+    
     if (checkColumn(row, col, colorToCheck)) {
         winingMessage(`${playerTurn} won!`, colorTurnRgb)
         return;

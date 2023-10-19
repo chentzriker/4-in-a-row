@@ -5,14 +5,6 @@ body {
     overflow-x: hidden;
 }
 
-/* .play-again-btn {
-
-}
-
-.play-again-btn:active {
-    border: 3px inset hsl(203, 92%, 62%);
-} */
-
 .game-button {
     background: none;
 	color: inherit;
