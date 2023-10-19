@@ -48,8 +48,8 @@ function turnConvertColor(arrCol, col) {
             }
             isCurrPlayerWon(col, i) //row and col of the cell
             count++;
-             if (count % 2 === 0) {
-                 document.getElementById("turn").textContent = "yellow's turn"
+            if (count % 2 === 0) {
+                document.getElementById("turn").textContent = "yellow's turn"
             }
             else {
                 document.getElementById("turn").textContent = "red's turn"
@@ -82,12 +82,12 @@ function isCurrPlayerWon(col, row) {
         winingMessage(`${colorToCheck} won!`)
         return;
     }
-    if (check2SLant(row, col, colorToCheck)) { 
+    if (check2SLant(row, col, colorToCheck)) {
         winingMessage(`${colorToCheck} won!`)
         return;
     }
-    //doesnt work
-    if (count+1===rows*cols) { 
+
+    if (count === rows * cols) {
         winingMessage("no one won :(")
         return;
     }
@@ -112,6 +112,7 @@ function resetGame() {
             }
         }
     }
+    count=1
 }
 
 //remove all white divs from board
@@ -122,7 +123,7 @@ function emptyBoard() {
 
         }
     }
-    count = 0
+    count = 1
     return
 
 }
