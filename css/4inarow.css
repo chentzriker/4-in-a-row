@@ -56,7 +56,7 @@ main{
     display: block;
     margin-left: auto;
     margin-right: auto;
-    background-color: blue;
+    background-color: darkblue;
     height: 80vh;
     width: 50vw;
     display: grid;
@@ -96,7 +96,7 @@ main{
 
 #game-name{
     text-align: center;
-    color:blue;
+    color:darkblue;
 }
 
 #turn{

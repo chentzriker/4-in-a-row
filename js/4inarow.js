@@ -14,7 +14,6 @@ level5.addEventListener("click", function () { createGameBoard(7, 8, 5) })
 createGameBoard(6, 7, 4)
 function createGameBoard(rowsNum, columnsNum, level) {
     emptyBoard()
-    console.log("hi");
     rows = rowsNum;
     cols = columnsNum;
     numInRow = level;
@@ -87,11 +86,11 @@ function isCurrPlayerWon(col, row) {
         winingMessage(`${colorToCheck} won!`)
         return;
     }
-    // doesnt work
-    // if (count===rows*cols) { 
-    //     winingMessage("no one won :(")
-    //     return;
-    // }
+    //doesnt work
+    if (count+1===rows*cols) { 
+        winingMessage("no one won :(")
+        return;
+    }
 
 }
 
@@ -187,8 +186,6 @@ function check1SLant(row, col, color) { // slant: /
     let indexHigherRow = row;
     let j;
     for (let i = col, j = row; i < board.length && j >= 0; i++, j--) {
-        // console.log('1first board[i][j]: ', board[i][j]);
-
         if (!board[i][j].classList.contains(color)) {
             indexRightCol = i - 1;
             indexHigherRow = j + 1;
@@ -223,7 +220,6 @@ function check2SLant(row, col, color) { // slant: \
     let indexHigherRow = row;
     let j;
     for (let i = col, j = row; i >= 0 && j >= 0; i--, j--) {
-        // console.log('2first board[i][j]: ', board[i][j]);
         if (!board[i][j].classList.contains(color)) {
             indexLeftCol = i + 1;
             indexHigherRow = j + 1;
@@ -238,7 +234,6 @@ function check2SLant(row, col, color) { // slant: \
     }
     counter = 0;
     for (let i = indexLeftCol, j = indexHigherRow; i < board.length && j < board[0].length; i++, j++) {
-        // console.log('2second board[i][j]: ', board[i][j]);
         if (board[i][j].classList.contains(color)) {
             counter++
         }
@@ -253,7 +248,6 @@ function check2SLant(row, col, color) { // slant: \
 }
 
 function winingMessage(message) {
-    console.log("entered")
     let messageBox = document.createElement("div");
     messageBox.setAttribute("id", "message-box")
     document.body.appendChild(messageBox)
