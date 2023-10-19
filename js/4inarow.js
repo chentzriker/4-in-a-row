@@ -83,7 +83,7 @@ function isCurrPlayerWon(col, row) {
 
     let playerTurn = colorToCheck === "color1" ? "player1" : "player2"
     let colorTurnRgb = colorToCheck === "color1" ? color1 : color2
-    
+
     if (checkColumn(row, col, colorToCheck)) {
         winingMessage(`${playerTurn} won!`, colorTurnRgb)
         return;
