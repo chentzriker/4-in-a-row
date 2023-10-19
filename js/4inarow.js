@@ -14,7 +14,6 @@ level5.addEventListener("click", function () { createGameBoard(7, 8, 5) })
 createGameBoard(6, 7, 4)
 function createGameBoard(rowsNum, columnsNum, level) {
     emptyBoard()
-    console.log("hi");
     rows = rowsNum;
     cols = columnsNum;
     numInRow = level;
@@ -49,8 +48,8 @@ function turnConvertColor(arrCol, col) {
             }
             isCurrPlayerWon(col, i) //row and col of the cell
             count++;
-             if (count % 2 === 0) {
-                 document.getElementById("turn").textContent = "yellow's turn"
+            if (count % 2 === 0) {
+                document.getElementById("turn").textContent = "yellow's turn"
             }
             else {
                 document.getElementById("turn").textContent = "red's turn"
@@ -83,15 +82,15 @@ function isCurrPlayerWon(col, row) {
         winingMessage(`${colorToCheck} won!`)
         return;
     }
-    if (check2SLant(row, col, colorToCheck)) { 
+    if (check2SLant(row, col, colorToCheck)) {
         winingMessage(`${colorToCheck} won!`)
         return;
     }
-    // doesnt work
-    // if (count===rows*cols) { 
-    //     winingMessage("no one won :(")
-    //     return;
-    // }
+
+    if (count === rows * cols) {
+        winingMessage("no one won :(")
+        return;
+    }
 
 }
 
@@ -113,6 +112,7 @@ function resetGame() {
             }
         }
     }
+    count=1
 }
 
 //remove all white divs from board
@@ -123,7 +123,7 @@ function emptyBoard() {
 
         }
     }
-    count = 0
+    count = 1
     return
 
 }
@@ -187,8 +187,6 @@ function check1SLant(row, col, color) { // slant: /
     let indexHigherRow = row;
     let j;
     for (let i = col, j = row; i < board.length && j >= 0; i++, j--) {
-        // console.log('1first board[i][j]: ', board[i][j]);
-
         if (!board[i][j].classList.contains(color)) {
             indexRightCol = i - 1;
             indexHigherRow = j + 1;
@@ -223,7 +221,6 @@ function check2SLant(row, col, color) { // slant: \
     let indexHigherRow = row;
     let j;
     for (let i = col, j = row; i >= 0 && j >= 0; i--, j--) {
-        // console.log('2first board[i][j]: ', board[i][j]);
         if (!board[i][j].classList.contains(color)) {
             indexLeftCol = i + 1;
             indexHigherRow = j + 1;
@@ -238,7 +235,6 @@ function check2SLant(row, col, color) { // slant: \
     }
     counter = 0;
     for (let i = indexLeftCol, j = indexHigherRow; i < board.length && j < board[0].length; i++, j++) {
-        // console.log('2second board[i][j]: ', board[i][j]);
         if (board[i][j].classList.contains(color)) {
             counter++
         }
@@ -253,7 +249,6 @@ function check2SLant(row, col, color) { // slant: \
 }
 
 function winingMessage(message) {
-    console.log("entered")
     let messageBox = document.createElement("div");
     messageBox.setAttribute("id", "message-box")
     document.body.appendChild(messageBox)
