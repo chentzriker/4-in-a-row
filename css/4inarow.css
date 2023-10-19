@@ -2,6 +2,7 @@ html,
 body {
     width: 100vw;
     height: 100vh;
+    overflow-x: hidden;
 }
 
 p {
@@ -14,7 +15,7 @@ p:active {
     border: 3px inset hsl(203, 92%, 62%);
 }
 
-main{
+main {
     display: flex;
 }
 
@@ -27,7 +28,7 @@ main{
 
 .white {
     background-color: white;
-    
+
 }
 
 .yellow {
@@ -38,16 +39,16 @@ main{
     background-color: red;
 }
 
-.level{
+.level {
     width: 10vw;
     height: 10vh;
     background-color: darkblue;
-    color:white;
+    color: white;
     text-align: center;
-    margin:0.5vh
+    margin: 0.5vh
 }
 
-#levels{
+#levels {
     margin-top: 5vh;
 }
 
@@ -87,7 +88,7 @@ main{
     font-size: 1.5rem;
     width: 30vw;
     height: 25vh;
-    z-index: 3;
+    z-index: 10;
     border-radius: 10px;
     position: absolute;
     top: 50%;
@@ -95,22 +96,27 @@ main{
     transform: translate(-50%, -50%);
 }
 
-#game-name{
+#game-name {
     margin-right: 2vw;
     text-align: right;
-    color:darkblue;
+    color: darkblue;
 }
 
-#turn{
-    background-color:darkblue ;
+#turn {
+    background-color: darkblue;
     width: 10vw;
     height: 10vh;
-    color:white;
+    color: white;
     text-align: center;
 }
-#blur-screen{
-width: 100vw;
-height: 100vh;
-background-color:rgba(255, 255, 255, 0.9);;
-z-index: 5;
+
+#blur-screen {
+    width: 100vw;
+    height: 120vh;
+    background-color: rgba(255, 255, 255, 0.9);
+    z-index: 5;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }

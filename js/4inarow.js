@@ -100,6 +100,7 @@ function resetGame() {
     document.getElementById("turn").textContent = "";
     if (document.getElementById("message-box")) {
         document.getElementById("message-box").remove();
+        document.getElementById("blur-screen").remove();
     }
     for (let i = 0; i < cols; i++) {
         for (let j = 0; j < rows; j++) {
@@ -251,6 +252,10 @@ function check2SLant(row, col, color) { // slant: \
 }
 
 function winingMessage(message) {
+    let blur = document.createElement("div");
+    blur.setAttribute("id", "blur-screen")
+    document.body.appendChild(blur)
+    console.log('blur: ', blur);
     let messageBox = document.createElement("div");
     messageBox.setAttribute("id", "message-box")
     document.body.appendChild(messageBox)
