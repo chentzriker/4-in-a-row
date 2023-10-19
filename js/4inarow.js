@@ -13,6 +13,7 @@ level4.addEventListener("click", function () { createGameBoard(6, 7, 4) })
 level5.addEventListener("click", function () { createGameBoard(7, 8, 5) })
 createGameBoard(6, 7, 4)
 function createGameBoard(rowsNum, columnsNum, level) {
+    document.getElementById("turn").textContent = "";
     emptyBoard()
     rows = rowsNum;
     cols = columnsNum;
@@ -96,6 +97,7 @@ function isCurrPlayerWon(col, row) {
 
 //Resets the game in case of a tie or win
 function resetGame() {
+    document.getElementById("turn").textContent = "";
     if (document.getElementById("message-box")) {
         document.getElementById("message-box").remove();
     }
