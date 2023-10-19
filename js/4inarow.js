@@ -11,6 +11,18 @@ const level5 = document.getElementById("5");
 level3.addEventListener("click", function () { createGameBoard(5, 6, 3) })
 level4.addEventListener("click", function () { createGameBoard(6, 7, 4) })
 level5.addEventListener("click", function () { createGameBoard(7, 8, 5) })
+
+
+let color1;
+let color2;
+document.getElementById("start-game").addEventListener("click", setPlayersColor)
+function setPlayersColor() {
+    color1 = document.getElementById("color1").value;
+    console.log('color1: ', color1);
+    color2 = document.getElementById("color2").value;
+    console.log('color2: ', color2);
+}
+
 createGameBoard(6, 7, 4)
 function createGameBoard(rowsNum, columnsNum, level) {
     document.getElementById("turn").textContent = "";
@@ -42,18 +54,23 @@ function turnConvertColor(arrCol, col) {
         if (arrCol[i].classList.contains("white")) {
             arrCol[i].classList.remove("white");
             if (count % 2 === 0) {
-                arrCol[i].classList.add("yellow")
+                arrCol[i].classList.add("color1")
+                arrCol[i].style.backgroundColor = color1
             }
             else {
-                arrCol[i].classList.add("red")
+                arrCol[i].classList.add("color2")
+                arrCol[i].style.backgroundColor = color2
+
             }
             isCurrPlayerWon(col, i) //row and col of the cell
             count++;
             if (count % 2 === 0) {
-                document.getElementById("turn").textContent = "yellow's turn"
+                document.getElementById("turn").textContent = "player 1 turn"
+                document.getElementById("turn").style.backgroundColor = color1
             }
             else {
-                document.getElementById("turn").textContent = "red's turn"
+                document.getElementById("turn").textContent = "player 2 turn"
+                document.getElementById("turn").style.backgroundColor = color2
             }
             break;
         }
@@ -61,30 +78,30 @@ function turnConvertColor(arrCol, col) {
 }
 
 function isCurrPlayerWon(col, row) {
-    //saves the div that was colored now
-    let coloredNow = board[col][row];
-    //counts how many of the same color 
     let colorToCheck;
     if (count % 2 === 0) {
-        colorToCheck = "yellow"
+        colorToCheck = "color1"
     } else {
-        colorToCheck = "red"
+        colorToCheck = "color2"
     }
+
+    let playerTurn = colorToCheck === "color1" ? "player1" : "player2"
+    let colorTurnRgb = colorToCheck === "color1" ? color1 : color2
     //checks if there are 4 in the column
     if (checkColumn(row, col, colorToCheck)) {
-        winingMessage(`${colorToCheck} won!`)
+        winingMessage(`${playerTurn} won!`, colorTurnRgb)
         return;
     }
     if (checkRow(row, col, colorToCheck)) {
-        winingMessage(`${colorToCheck} won!`)
+        winingMessage(`${playerTurn} won!`, colorTurnRgb)
         return;
     }
     if (check1SLant(row, col, colorToCheck)) {
-        winingMessage(`${colorToCheck} won!`)
+        winingMessage(`${playerTurn} won!`, colorTurnRgb)
         return;
     }
     if (check2SLant(row, col, colorToCheck)) {
-        winingMessage(`${colorToCheck} won!`)
+        winingMessage(`${playerTurn} won!`, colorTurnRgb)
         return;
     }
 
@@ -103,18 +120,12 @@ function resetGame() {
     }
     for (let i = 0; i < cols; i++) {
         for (let j = 0; j < rows; j++) {
-
-            if (board[i][j].classList.contains("yellow")) {
-                board[i][j].classList.remove("yellow");
-                board[i][j].classList.add("white")
-            }
-            else if (board[i][j].classList.contains("red")) {
-                board[i][j].classList.remove("red");
-                board[i][j].classList.add("white")
-            }
+            board[i][j].classList.remove("color1", "color2")
+            board[i][j].classList.add("white")
+            board[i][j].style.backgroundColor = "white"
         }
     }
-    count=1
+    count = 1
 }
 
 //remove all white divs from board
@@ -250,7 +261,7 @@ function check2SLant(row, col, color) { // slant: \
     return false
 }
 
-function winingMessage(message) {
+function winingMessage(message, colorTurnRgb) {
     let messageBox = document.createElement("div");
     messageBox.setAttribute("id", "message-box")
     document.body.appendChild(messageBox)
@@ -261,4 +272,5 @@ function winingMessage(message) {
     playAgain.textContent = "play again";
     messageBox.appendChild(playAgain)
     playAgain.addEventListener("click", resetGame)
+    messageBox.style.backgroundColor=colorTurnRgb;
 }

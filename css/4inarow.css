@@ -14,40 +14,38 @@ p:active {
     border: 3px inset hsl(203, 92%, 62%);
 }
 
-main{
+main {
     display: flex;
 }
 
 .white,
-.yellow,
-.red {
+.color1,
+.color2 {
     margin: 5px;
     border-radius: 50%;
 }
 
 .white {
     background-color: white;
-    
+
 }
 
-.yellow {
-    background-color: yellow;
+.color1 {
 }
 
-.red {
-    background-color: red;
+.color2 {
 }
 
-.level{
+.level {
     width: 10vw;
     height: 10vh;
     background-color: darkblue;
-    color:white;
+    color: white;
     text-align: center;
-    margin:0.5vh
+    margin: 0.5vh
 }
 
-#levels{
+#levels {
     margin-top: 5vh;
 }
 
@@ -95,22 +93,33 @@ main{
     transform: translate(-50%, -50%);
 }
 
-#game-name{
+#game-name {
     margin-right: 2vw;
     text-align: right;
-    color:darkblue;
+    color: darkblue;
 }
 
-#turn{
-    background-color:darkblue ;
+#turn {
+    background-color: darkblue;
     width: 10vw;
     height: 10vh;
-    color:white;
+    color: white;
     text-align: center;
 }
-#blur-screen{
-width: 100vw;
-height: 100vh;
-background-color:rgba(255, 255, 255, 0.9);;
-z-index: 5;
+
+#blur-screen {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(255, 255, 255, 0.9);
+    ;
+    z-index: 5;
+}
+
+#color-inputs {
+    margin-right: 2vw;
+    background-color: darkblue;
+    color: white;
+    width: 10vw;
+    height: 20vh;
+    text-align: center;
 }
